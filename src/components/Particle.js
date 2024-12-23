@@ -8,15 +8,15 @@ function Particle() {
       params={{
         particles: {
           number: {
-            value: 160,
+            value: 230,
             density: {
               enable: true,
-              value_area: 1500,
+              value_area: 3000,
             },
           },
           line_linked: {
             enable: false,
-            opacity: 0.03,
+            opacity: 0.02,
           },
           move: {
             direction: "right",
