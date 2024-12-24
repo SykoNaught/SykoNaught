@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import { BsTwitterX } from "react-icons/bs";
 
 function AboutCard() {
   return (
@@ -16,7 +17,7 @@ function AboutCard() {
             <br /><br />
           </p>
           <p>
-            <a target="_blank" href="https://x.com/sykonaught_x" className="red">Follow me on 𝕏</a> to witness my shenanigans.
+            <a target="_blank" href="https://x.com/sykonaught_x" className="red">Follow me on <BsTwitterX /></a> to witness my shenanigans.
           </p>
           <p style={{ color: "rgb(140 115 115)",fontStyle: "italic" }}>
             "Sold my SOL for some Shitcoins"

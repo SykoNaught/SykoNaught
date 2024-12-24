@@ -21,6 +21,9 @@ html {
   background: #350000;
 }
 
+body{
+  color:rgb(240, 240, 240);
+}
 .red {
   color: var(--imp-text-color) !important;
   font-family:var(--imp-text-font) !important;
@@ -483,10 +486,16 @@ a.red:hover{
 
 @media (max-width: 767px) {
   .interior-content {
-    padding: 3rem 0 2rem !important;
+    padding: 2rem 0 2rem !important;
   }
 }
 
+.interior-section {
+  position: relative !important;
+  padding-top: 150px !important;
+  padding-bottom: 30px !important;
+  background-image: var(--section-background-color) !important;
+}
 
 /* --------- */
 /* Projects */

@@ -21,18 +21,17 @@ function ProjectCards(props) {
             {"GitHub"}
           </Button>
           )}
-          {"\n"}
-          {"\n"}
 
           {props.demoLink && (
             <Button
               variant="primary"
               href={props.demoLink}
-              target="_blank"
+              target={props.internalLink ? "_self" : "_blank"}
               style={props.ghLink ? { marginLeft: "10px" } : {}}
             >
               <CgWebsite /> &nbsp;
-              {"Demo"}
+              
+              {"Check It out"}
             </Button>
           )}
       </Card.Footer>

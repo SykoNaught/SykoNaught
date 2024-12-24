@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
+import SCWCalc from "./components/Projects/RegretCalc/RegretCalc";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,9 +13,11 @@ import {
   Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import "./style.css";
+
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
+import "react-datetime/css/react-datetime.css";
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -36,9 +38,9 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/regret-calculator" element={<SCWCalc />} />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />

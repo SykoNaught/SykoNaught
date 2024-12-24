@@ -1,9 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-} from "react-icons/ai";
+import {AiFillGithub } from "react-icons/ai";
+import { BsTwitterX } from "react-icons/bs";
 
 function Footer() {
   let date = new Date();
@@ -31,12 +29,12 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://twitter.com/Sykonaught_X"
+                href="https://x.com/Sykonaught_X"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <AiOutlineTwitter />
+                <BsTwitterX />
               </a>
             </li>
           </ul>

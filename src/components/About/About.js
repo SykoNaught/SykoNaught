@@ -8,7 +8,7 @@ import TradingViewWidget from "../TradingWidget/TradingViewWidgetMini";
 function About() {
   return (
     <Container fluid className="about-section">
-      <Particle />
+      
       <Container>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
@@ -32,13 +32,14 @@ function About() {
         </Row>
         <div style={{paddingTop:"2rem"}}>
           <h1 className="project-heading">
-            Professional <strong className="purple">Skillset </strong>
+            Professional <strong className="red">Skillset </strong>
           </h1>
 
           <Techstack />
         </div>
         
       </Container>
+      <Particle />
     </Container>
   );
 }
