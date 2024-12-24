@@ -12,14 +12,20 @@ html {
   );
 
   --imp-text-color: #b12222;
+  --imp-text-font: "Metal Mania", serif;
+  --sec-imp-color: #a53737;
+  --sec-imp-color-alt: #c72828;
 }
 
 ::selection {
   background: #350000;
 }
 
-.purple {
+.red {
   color: var(--imp-text-color) !important;
+  font-family:var(--imp-text-font) !important;
+  font-weight:400;
+  letter-spacing: 3px;
 }
 
 button:focus {
@@ -72,10 +78,16 @@ button:focus {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(235, 130, 130, 0.911);
+  background: var(--sec-imp-color) !important;
   border-radius: 12px;
 }
 
+a{
+  text-decoration:none !important;
+}
+a.red:hover{
+  color: var(--sec-imp-color-alt) !important;
+}
 /* --------- */
 /* Navbar Section  */
 /* --------- */
@@ -156,7 +168,7 @@ button:focus {
 }
 .navbar-brand {
   color: rgb(188, 188, 188) !important;
-  font-family: "Metal Mania", serif;
+  font-family:var(--imp-text-font) !important;
   font-weight:400;
   letter-spacing: 3px;
 }
@@ -193,6 +205,9 @@ button:focus {
   position: relative;
   z-index: 1;
 }
+.navbar-nav .nav-item a:hover {
+  text-decoration:none !important
+}
 
 .navbar-nav .nav-item a::after {
   content: "";
@@ -201,7 +216,7 @@ button:focus {
   height: 5px;
   width: 0;
   border-radius: 16px;
-  background: #f55b5b;
+  background: var(--sec-imp-color) !important;
   bottom: 1px;
   left: 0;
   z-index: -1;
@@ -290,20 +305,17 @@ button:focus {
 }
 
 .main-name {
-  color: #960000;
-  font-family: "Metal Mania", serif;
-  font-weight:400;
   letter-spacing: 3px;
 }
 
 .Typewriter__wrapper {
   font-size: 2.2em !important;
-  color: #a53737 !important;
+  color: var(--sec-imp-color) !important;
   font-weight: 600 !important;
 }
 .Typewriter__cursor {
   font-size: 2.4em !important;
-  color: #a53737 !important;
+  color: var(--sec-imp-color) !important;
 }
 
 @media (max-width: 767px) {
@@ -415,7 +427,7 @@ button:focus {
   padding-top: 10px !important;
   padding-bottom: 8px !important ;
 }
-.footer-copywright {
+.footer-copyright {
   text-align: center !important;
 }
 
@@ -425,7 +437,7 @@ button:focus {
 }
 
 @media (max-width: 767px) {
-  .footer-copywright {
+  .footer-copyright {
     text-align: center !important;
   }
 
@@ -447,11 +459,11 @@ button:focus {
 }
 
 .blockquote-footer {
-  color: #c08888 !important;
+  color: #834646 !important;
 }
 
-.footer-copywright-name{ 
-  font-family: "Metal Mania", serif;
+.footer-copyright-name{ 
+  font-family:var(--imp-text-font) !important;
   font-weight:400;
   letter-spacing: 3px;
 }
@@ -474,9 +486,9 @@ button:focus {
 }
 
 .project-card-view {
-  box-shadow: 0 4px 5px 3px rgba(136, 53, 53, 0.459) !important;
+  box-shadow: 0 4px 5px 3px rgba(165, 55, 55, 0.45) !important;
   color: white !important;
-  background-color: transparent !important;
+  background-color: #1a1a1a !important;
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
@@ -484,38 +496,7 @@ button:focus {
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 4px 5px rgba(144, 72, 72, 0.561) !important;
-}
-
-.blog-card {
-  padding-top: 50px !important;
-  padding-bottom: 50px !important;
-  padding-left: 25px !important;
-  padding-right: 25px !important;
-  height: auto !important;
-}
-
-.blog-card-view {
-  background-color: transparent !important;
-  box-shadow: 0 3px 3px 2px rgba(161, 77, 77, 0.459) !important;
-  color: white !important;
-  transition: all 0.5s ease 0s !important;
-  height: 100% !important;
-}
-
-.blog-link {
-  color: white !important;
-  text-decoration: none !important;
-}
-
-.blog-link:hover {
-  cursor: pointer !important;
-}
-
-.blog-card-view:hover {
-  transform: scale(1.02) !important;
-  overflow: hidden !important;
-  box-shadow: 0 3px 3px 5px rgba(173, 88, 88, 0.65) !important;
+  box-shadow: 0 4px 4px 5px rgba(165, 55, 55, 0.65) !important;
 }
 
 .card-img-top {
@@ -524,22 +505,16 @@ button:focus {
   border-radius: 10px !important;
 }
 
-.blog-img {
-  padding: 0px !important;
-  opacity: 0.8 !important;
-  border-radius: 0px !important;
-}
-
 .btn-primary {
   color: #fff !important;
-  background-color: #863636 !important;
-  border-color: #863636 !important;
+  background-color: var(--sec-imp-color) !important;
+  border-color: var(--sec-imp-color) !important;
 }
 
 .btn-primary:hover {
   color: #fff !important;
-  background-color: #c52020d7 !important;
-  border-color: #c52020d7 !important;
+  background-color: var(--sec-imp-color-alt) !important;
+  border-color: var(--sec-imp-color-alt) !important;
 }
 .btn:focus {
   outline: none !important;

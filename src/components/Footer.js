@@ -11,10 +11,10 @@ function Footer() {
   return (
     <Container fluid className="footer">
       <Row>
-        <Col md="4" className="footer-copywright">
-          <h3>Designed and Developed by <span className="footer-copywright-name">  &nbsp;SykoNaught</span></h3>
+        <Col md="4" className="footer-copyright">
+          <h3>Designed and Developed by <span className="red">  &nbsp;SykoNaught</span></h3>
         </Col>
-        <Col md="4" className="footer-copywright">
+        <Col md="4" className="footer-copyright">
           <h3>Copyright © {year}</h3>
         </Col>
         <Col md="4" className="footer-body">
