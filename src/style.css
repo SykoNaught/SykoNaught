@@ -227,6 +227,9 @@ a.red:hover{
   width: 100%;
 }
 
+.navbar-expand-md, .navbar-expand-sm{
+  backdrop-filter: blur(15px) !important;
+}
 /* --------- */
 /* Home section */
 /* --------- */
@@ -291,7 +294,11 @@ a.red:hover{
   padding: 9rem 0 2rem !important;
   color: whitesmoke;
   text-align: left;
-
+}
+@media (max-width: 767px) {
+  .home-content {
+    padding: 5rem 0 2rem !important;
+  }
 }
 
 .heading {
@@ -467,6 +474,20 @@ a.red:hover{
   font-weight:400;
   letter-spacing: 3px;
 }
+/* --------- */
+/* Internals */
+/* --------- */
+.interior-content {
+  padding: 6rem 0 2rem !important;
+}
+
+@media (max-width: 767px) {
+  .interior-content {
+    padding: 3rem 0 2rem !important;
+  }
+}
+
+
 /* --------- */
 /* Projects */
 /* --------- */

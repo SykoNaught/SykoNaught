@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
-import TradingViewWidget from "../TradingWidget/TradingViewWidget";
+import TradingViewWidget from "../TradingWidget/TradingViewWidgetMini";
 
 function About() {
   return (
@@ -13,10 +13,9 @@ function About() {
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
             md={7}
+            className="interior-content"
             style={{
               justifyContent: "center",
-              paddingTop: "30px",
-              paddingBottom: "50px",
             }}
           >
             <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
@@ -26,16 +25,19 @@ function About() {
           </Col>
           <Col
             md={5}
-            style={{ paddingTop: "120px", paddingBottom: "50px" }}
+            className="interior-content"
           >
             <TradingViewWidget />
           </Col>
         </Row>
-        <h1 className="project-heading">
-          Professional <strong className="purple">Skillset </strong>
-        </h1>
+        <div style={{paddingTop:"2rem"}}>
+          <h1 className="project-heading">
+            Professional <strong className="purple">Skillset </strong>
+          </h1>
 
-        <Techstack />
+          <Techstack />
+        </div>
+        
       </Container>
     </Container>
   );

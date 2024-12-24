@@ -24,6 +24,9 @@ function Home() {
               <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
               </div>
+              <div className="shameless-begging">
+                
+              </div>
             </Col>
 
             <Col md={5} style={{ paddingBottom: 20, textAlign: "center" }}>
