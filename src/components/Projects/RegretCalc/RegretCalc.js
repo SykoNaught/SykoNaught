@@ -242,6 +242,13 @@ useEffect(() => {
             <Row>
               <Col md={12}>
                 <h2 className="mb-5 mt-3">{currentPrice > historicalPrice ? <span>Your Bloodline Is <span className="red">Disappointed</span></span> : <span>You Got <span className="red">Lucky</span></span>}</h2>
+                <p>Let's see what would've happened had you spent {formatCurrency(fudAmount)} on {selectedCoin[0]?.id} on {selectedDate
+                      ? " " + new Date(selectedDate).toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })
+                      : "the selected date"}{" "}</p>
               </Col>
             </Row>
             <hr />

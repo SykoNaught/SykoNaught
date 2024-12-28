@@ -11,7 +11,7 @@ function AboutCard() {
             Hello Mortal, my name is &nbsp;<span className="red"> SykoNaught</span>.
           </p>
           <p style={{ textAlign: "justify" }}>
-            Solana Degen, Software Developer, General Ruffianism and Tom Foolery.
+            Solana Degen, Software Developer, General Purveyor of Ruffianism and Tom Foolery.
             <br />
             Just a guy who likes to build things and lose money in the trenches of the memecoin market.
             <br /><br />
