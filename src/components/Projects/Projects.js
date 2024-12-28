@@ -23,7 +23,7 @@ function Projects() {
               title="Crypto Regret Calculator"
               description="Plug in the crypto you chickened out on, the date you wimped out, and the cash you didn't spend. Watch in agony as it shows you just how rich you could have been, if only you had the balls back then."
               internalLink={true}
-              demoLink="/projects/regret-calculator"
+              demoLink="/projects/crypto-regret?c=BTC&d=1295568000&f=3000"
             />
           </Col>
           <Col md={4} className="project-card">

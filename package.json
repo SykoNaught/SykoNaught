@@ -13,6 +13,7 @@
     "react-bootstrap": "^2.2.1",
     "react-bootstrap-datetimepicker": "^0.0.22",
     "react-bootstrap-typeahead": "^6.3.4",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-datetime": "^3.3.1",
     "react-dom": "^17.0.2",
     "react-github-calendar": "^3.2.2",
@@ -21,6 +22,7 @@
     "react-pdf": "^5.7.1",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
+    "react-tooltip": "^5.28.0",
     "react-tsparticles": "^1.42.2",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.4"

@@ -19,6 +19,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import "react-datetime/css/react-datetime.css";
 
+
 function App() {
   const [load, upadateLoad] = useState(true);
 
@@ -40,7 +41,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/regret-calculator" element={<SCWCalc />} />
+          <Route path="/projects/crypto-regret" element={<SCWCalc />} />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />
