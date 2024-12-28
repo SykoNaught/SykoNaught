@@ -173,6 +173,7 @@ useEffect(() => {
           <Col md={3}>
             <Typeahead
               id="coin-select"
+              className="mb-2"
               onChange={(selected) => setSelectedCoin(selected)}
               options={coins}
               isLoading={loading}
@@ -183,6 +184,7 @@ useEffect(() => {
           </Col>
           <Col md={3}>
             <Datetime
+              className="mb-2"
               onChange={(date) => setSelectedDate(date)}
               inputProps={{ placeholder: "Select a date" }}
               isValidDate={(current) => current.isBefore(Datetime.moment())}
@@ -193,6 +195,7 @@ useEffect(() => {
           <Col md={3}>
             <Form.Control
               type="number"
+              className="mb-2"
               id="fudAmount"
               placeholder="$ Amount you FUDed"
               onChange={(e) => setFudAmount(Number(e.target.value))}
