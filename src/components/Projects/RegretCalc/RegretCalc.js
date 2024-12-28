@@ -305,26 +305,27 @@ useEffect(() => {
                       like you know you wanted to, you would have <strong>{(currentPrice / historicalPrice).toFixed(1)}
                       X</strong>'d your investment and turned that measly {formatCurrency(fudAmount)} into a whopping <strong>{formatCurrency(profit)}</strong>.</p>
                       <p style={{fontSize: "1.5em"}}>Too bad you didn't and now you have to go sit at a desk for the next 20+ years instead of retiring on your yacht with a couple baddies.</p>
-                      <div className="regret-highlight-box mt-5">
-                        <p style={{fontSize: "1.5em"}}>When your grandchildren ask you why they have to work for a living while you fumbled hard during the greatest transfer of wealth in modern history, just send them this link to save yourself the shame of having to tell them to their sad little faces.</p>
-                        <div className="d-flex justify-content-center">
-                          <Form.Control
-                            type="text"
-                            id="copyLink"
-                            className="project-copy-box"
-                            disabled
-                            value={"https://sykonaught.com/projects/crypto-regret?c=" + selectedCoin[0]?.id + "&d=" + timestamp + "&f=" + fudAmount}
-                          />
-
-                          <button className="project-copy-btn" onClick={handleCopy} data-tooltip-id="copy" data-tooltip-content="Copied!"><AiOutlineCopy /></button>
-                        </div>
-                        
-                        <Tooltip id="copy" openOnClick="true" />
-                      </div>
+                      
                   </Col>
                 </Row>
                 </>
               )}
+                <div className="regret-highlight-box mt-5">
+                  <p style={{fontSize: "1.2em"}}>When your grandchildren ask you why they have to work for a living while you fumbled hard during the greatest transfer of wealth in modern history, just send them this link to save yourself the shame of having to tell them to their sad little faces.</p>
+                  <div className="d-flex justify-content-center">
+                    <Form.Control
+                      type="text"
+                      id="copyLink"
+                      className="project-copy-box"
+                      disabled
+                      value={"https://sykonaught.com/projects/crypto-regret?c=" + selectedCoin[0]?.id + "&d=" + timestamp + "&f=" + fudAmount}
+                    />
+
+                    <button className="project-copy-btn" onClick={handleCopy} data-tooltip-id="copy" data-tooltip-content="Copied!"><AiOutlineCopy /></button>
+                  </div>
+                  
+                  <Tooltip id="copy" openOnClick="true" />
+                </div>
               </>
             )}
           </div>
