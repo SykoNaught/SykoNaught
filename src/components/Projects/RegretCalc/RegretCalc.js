@@ -19,7 +19,8 @@ function RegretCalc() {
   const [profit, setProfit] = useState(null);
   const [error, setError] = useState(null);
   const [firstLoad, setFirstLoad] = useState(true);
-  const [copied, setCopied] = useState(false);
+  const [changedInputs, setChangedInputs] = useState(false);
+
 
   
   // Calculate timestamp from selectedDate
@@ -33,10 +34,7 @@ function RegretCalc() {
     }).format(value);
   };
   const handleCopy = () => {
-    setCopied(true);
     navigator.clipboard.writeText("https://sykonaught.com/projects/crypto-regret?c=" + selectedCoin[0]?.id + "&d=" + timestamp + "&f=" + fudAmount)
-
-    console.log(copied)
   };
   // Parse URL parameters on initial load and trigger calculation if all parameters exist
 useEffect(() => {
@@ -108,13 +106,14 @@ useEffect(() => {
 }, []);
 
   const fetchPrices = async () => {
+    
     if (!selectedCoin.length || !selectedDate || fudAmount <= 0) {
       setError("Please ensure all fields are populated.");
       return;
     }
     setError(null);
     setCalculating(true);
-
+    setChangedInputs(false);
     const coinSymbol = selectedCoin[0]?.id;
 
     try {
@@ -174,7 +173,7 @@ useEffect(() => {
             <Typeahead
               id="coin-select"
               className="mb-2"
-              onChange={(selected) => setSelectedCoin(selected)}
+              onChange={(selected) => {setSelectedCoin(selected); setChangedInputs(true)}}
               options={coins}
               isLoading={loading}
               placeholder={loading ? "Loading coins..." : "Select a coin"}
@@ -185,7 +184,7 @@ useEffect(() => {
           <Col md={3}>
             <Datetime
               className="mb-2"
-              onChange={(date) => setSelectedDate(date)}
+              onChange={(date) => {setSelectedDate(date); setChangedInputs(true)}}
               inputProps={{ placeholder: "Select a date" }}
               isValidDate={(current) => current.isBefore(Datetime.moment())}
               timeFormat={false}
@@ -198,7 +197,7 @@ useEffect(() => {
               className="mb-2"
               id="fudAmount"
               placeholder="$ Amount you FUDed"
-              onChange={(e) => setFudAmount(Number(e.target.value))}
+              onChange={(e) => {setFudAmount(Number(e.target.value)); setChangedInputs(true)}}
               value={fudAmount || ""}
             />
           </Col>
@@ -237,7 +236,7 @@ useEffect(() => {
           </Row>
         )}
           
-        {!calculating && historicalPrice && currentPrice && (
+        {!calculating && historicalPrice && currentPrice && !changedInputs && (
           <div className="regret-results-card mt-5 mb-5">
             <Row>
               <Col md={12}>
@@ -285,7 +284,7 @@ useEffect(() => {
                 </Col>
                 <Col md={6}>
                   <p style={{fontSize: "2.5em"}}>
-                    <strong style={{color: profit > 0 ? "#109d00" : "#b12222"}}>{formatCurrency(profit)}</strong>
+                    <strong style={{color: profit > fudAmount ? "#109d00" : "#b12222"}}>{formatCurrency(profit)}</strong>
                   </p>
                 </Col>
               </Row>
