@@ -665,6 +665,45 @@ a.red:hover{
   box-shadow: 0 4px 4px 5px rgba(165, 55, 55, 0.65) !important;
 }
 
+
+.chat-box{
+  box-shadow: 0 4px 5px 3px rgba(165, 55, 55, 0.45) !important;
+  color: white !important;
+  background-color: #1a1a1a !important;
+  opacity: 0.9 !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.sykochat-input{
+  background-color: #333333;
+  color: white;
+  border: none;
+  padding:5px 10px;
+  width: 100%;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+}
+.sykochat-input:focus {
+  outline: none;
+}
+.send-button{
+  width: 50px;
+  height: 34px;
+  background-color: #333;
+  color: white;
+  border: 0px;
+  border-left: 2px solid #101010;
+  border-radius: 0px !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+
+}
+
 .resume-section {
   position: relative !important;
   padding-top: 110px !important;
@@ -803,4 +842,22 @@ a.red:hover{
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+.pulse-animation{
+    display:inline-block;
+    width:8px;
+    height:8px;
+    margin:0px 5px;
+    border-radius:50%;
+    background-color:#fff;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.5);
+  }
 }
