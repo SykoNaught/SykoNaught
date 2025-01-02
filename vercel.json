@@ -1,19 +1,14 @@
 {
   "version": 2,
-  "projects": [
+  "builds": [
     {
-      "name": "frontend",
-      "source": "frontend",
-      "buildCommand": "npm run build",
-      "outputDirectory": "build",
-      "framework": "create-react-app"
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
     },
     {
-      "name": "backend",
-      "source": "backend",
-      "buildCommand": "npm run build",
-      "outputDirectory": ".next",
-      "framework": "nextjs"
+      "src": "backend/next.config.js",
+      "use": "@vercel/next"
     }
   ],
   "rewrites": [
