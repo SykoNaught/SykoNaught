@@ -93,7 +93,7 @@ const ChatBot = (props) => {
                                 style={{
                                     textAlign: msg.sender === "User" ? "right" : "left",
                                     margin: "10px 0",
-                                    borderTop: "2px solid #333",
+                                    borderTop: index !== 0 ? ("2px solid #333") : "0px;",
                                     padding: "20px 0px"
                                 }}
                             >
