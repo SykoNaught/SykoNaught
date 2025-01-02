@@ -44,7 +44,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/crypto-regret" element={<SCWCalc />} />
           <Route path="/projects/sykochat" element={<SykoChat />} />
-          <Route path="*" element={<Navigate to="/"/>} />
+          {/*<Route path="*" element={<Navigate to="/"/>} />*/}
         </Routes>
         <Footer />
       </div>
