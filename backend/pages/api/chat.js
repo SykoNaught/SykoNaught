@@ -5,7 +5,7 @@ const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 
 // Initialize CORS middleware
 const cors = Cors({
-    methods: ["POST", "GET"], // Specify allowed methods
+    methods: ["POST", "GET", "OPTIONS", "HEAD"], // Specify allowed methods
     origin: (origin, callback) => {
         const allowedOrigins = ["https://sykonaught.com", "http://localhost:3000"];
         if (!origin || allowedOrigins.includes(origin)) {
@@ -29,9 +29,16 @@ function runMiddleware(req, res, fn) {
 }
 
 export default async function handler(req, res) {
-    // Run the CORS middleware first
-    console.log(`Incoming request: ${req.method} ${req.url}`);
-    await runMiddleware(req, res, cors);
+     // Handle CORS
+     await runMiddleware(req, res, cors);
+
+     // Handle preflight requests (OPTIONS)
+     if (req.method === "OPTIONS") {
+         res.setHeader("Access-Control-Allow-Origin", "https://sykonaught.com");
+         res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+         res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+         return res.status(204).end();
+     }
 
     if (req.method === "POST") {
         console.log("POST request received");
