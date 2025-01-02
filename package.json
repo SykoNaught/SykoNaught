@@ -1,8 +1,0 @@
-{
-    "name": "sykonaught",
-    "private": true,
-    "workspaces": [
-      "/frontend",
-      "/backend"
-    ]
-  }
