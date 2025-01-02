@@ -5,15 +5,8 @@ const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 
 // Initialize CORS middleware
 const cors = Cors({
-    methods: ["POST", "GET", "HEAD"], // Allowed HTTP methods
-    origin: (origin, callback) => {
-        if (origin === "https://sykonaught.com" || origin === undefined) {
-            // Allow specific origin or local requests
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    methods: ["POST", "GET"],
+    origin: "https://sykonaught.com", // Allow only the production frontend domain
 });
 
 // Helper function to run middleware
@@ -30,9 +23,11 @@ function runMiddleware(req, res, fn) {
 
 export default async function handler(req, res) {
     // Run the CORS middleware first
+    console.log(`Incoming request: ${req.method} ${req.url}`);
     await runMiddleware(req, res, cors);
 
     if (req.method === "POST") {
+        console.log("POST request received");
         const { message } = req.body;
 
         try {
@@ -101,6 +96,8 @@ export default async function handler(req, res) {
             res.status(500).json({ error: error.message });
         }
     } else {
-        res.status(405).json({ error: "Method not allowed." });
+        console.log(`Method ${req.method} not allowed`);
+        res.setHeader("Allow", ["POST"]);
+        res.status(405).json({ error: `Method ${req.method} Not Allowed` });
     }
 }
