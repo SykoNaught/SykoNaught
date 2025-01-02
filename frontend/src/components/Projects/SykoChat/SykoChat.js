@@ -83,7 +83,7 @@ const ChatBot = (props) => {
             <Container>
                 <div className="chat-box">
                     <div style={{
-                        height: "calc(80vh - 58px)",
+                        height: !props.isMobile ?("calc(70vh - 58px)") : ("calc(80vh - 58px)"),
                         overflowY: "auto",
                         padding: "20px",
                     }}>
