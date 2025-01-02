@@ -13,7 +13,7 @@ function Footer() {
           <h3>Designed and Developed by <span className="red">  &nbsp;SykoNaught</span></h3>
         </Col>
         <Col md="4" className="footer-copyright">
-          <h3>Copyright © {year}</h3>
+          <h3>© {year} SykoNaught.com</h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">

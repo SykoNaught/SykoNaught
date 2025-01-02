@@ -23,7 +23,6 @@ function AppContent() {
     const handleResize = () => {
       const isMobileScreen = window.innerWidth <= 768;
       setIsMobile(isMobileScreen);
-      console.log(`isMobile: ${isMobileScreen}`); // Debugging log
     };
 
     handleResize(); // Initial check
@@ -31,9 +30,7 @@ function AppContent() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    console.log(`Current pathname: ${location.pathname}`); // Debugging log
-  }, [location.pathname]);
+  useEffect(() => {}, [location.pathname]);
 
   return (
     <>

@@ -74,13 +74,13 @@ const ChatBot = (props) => {
                     }}
                     >
                     <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-                        Chat With <span className="red">SykoNaught</span>
+                        Chat With <span className="red">SykoNaught</span> AI
                     </h1>
                     
                     </Col>
                 </Row>
             </Container>
-            <Container fluid>
+            <Container>
                 <div className="chat-box">
                     <div style={{
                         height: "calc(60vh - 58px)",
@@ -93,11 +93,18 @@ const ChatBot = (props) => {
                                 style={{
                                     textAlign: msg.sender === "User" ? "right" : "left",
                                     margin: "10px 0",
-                                    borderTop: index !== 0 ? ("2px solid #333") : "0px;",
-                                    padding: "20px 0px"
                                 }}
-                            >
-                                <strong>{msg.sender}:</strong> <p style={{margin:"0px"}}>{msg.text}</p>
+                            >   
+                                {msg.sender === "User" ? (
+                                    <span className="user-message">
+                                        <p style={{margin:"0px"}}>{msg.text}</p>
+                                    </span>
+                                ):(
+                                    <span>
+                                        <span className="red" style={{display:"block"}}>{msg.sender}:</span> <p className="syko-message">{msg.text}</p>
+                                    </span>
+                                )}
+                                
                             </div>
                         ))}
                         {/* Show loading indicator while waiting for a response */}
