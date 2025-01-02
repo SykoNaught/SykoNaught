@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import Particle from "../../Particle";
 import { Typeahead } from "react-bootstrap-typeahead";
@@ -54,18 +54,7 @@ useEffect(() => {
     }
   }, [coins]);
 
-  // Automatically calculate on first load if all fields are populated
-  useEffect(() => {
-    if (
-      firstLoad &&
-      selectedCoin.length > 0 &&
-      selectedDate &&
-      fudAmount > 0
-    ) {
-      fetchPrices();
-      setFirstLoad(false); // Disable further automatic calculations
-    }
-  }, [firstLoad, selectedCoin, selectedDate, fudAmount]);
+  
 
 
 // Fetch coin list and cache
@@ -105,52 +94,62 @@ useEffect(() => {
   fetchCoins();
 }, []);
 
-  const fetchPrices = async () => {
-    
-    if (!selectedCoin.length || !selectedDate || fudAmount <= 0) {
-      setError("Please ensure all fields are populated.");
-      return;
+const fetchPrices = useCallback(async () => {
+  if (!selectedCoin.length || !selectedDate || fudAmount <= 0) {
+    setError("Please ensure all fields are populated.");
+    return;
+  }
+  setError(null);
+  setCalculating(true);
+  setChangedInputs(false);
+  const coinSymbol = selectedCoin[0]?.id;
+
+  try {
+    const historicalUrl = `https://min-api.cryptocompare.com/data/pricehistorical?fsym=${coinSymbol}&tsyms=USD&ts=${timestamp}&api_key=b4452393ced7caa2721b88f21356f268e663cb18cc669cd8d4c8ee125c368a31`;
+    const historicalResponse = await fetch(historicalUrl);
+    if (!historicalResponse.ok) {
+      throw new Error(`Historical API returned status ${historicalResponse.status}`);
     }
-    setError(null);
-    setCalculating(true);
-    setChangedInputs(false);
-    const coinSymbol = selectedCoin[0]?.id;
+    const historicalData = await historicalResponse.json();
+    const historical = historicalData[coinSymbol]?.USD || "Unavailable";
 
-    try {
-      const historicalUrl = `https://min-api.cryptocompare.com/data/pricehistorical?fsym=${coinSymbol}&tsyms=USD&ts=${timestamp}&api_key=b4452393ced7caa2721b88f21356f268e663cb18cc669cd8d4c8ee125c368a31`;
-      const historicalResponse = await fetch(historicalUrl);
-      if (!historicalResponse.ok) {
-        throw new Error(`Historical API returned status ${historicalResponse.status}`);
-      }
-      const historicalData = await historicalResponse.json();
-      const historical = historicalData[coinSymbol]?.USD || "Unavailable";
-
-      const currentUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinSymbol}&tsyms=USD&api_key=b4452393ced7caa2721b88f21356f268e663cb18cc669cd8d4c8ee125c368a31`;
-      const currentResponse = await fetch(currentUrl);
-      if (!currentResponse.ok) {
-        throw new Error(`Current price API returned status ${currentResponse.status}`);
-      }
-      const currentData = await currentResponse.json();
-      const current = currentData.USD || "Unavailable";
-
-      setHistoricalPrice(historical);
-      setCurrentPrice(current);
-
-      if (historical && current && fudAmount > 0) {
-        const coinsPurchased = fudAmount / historical;
-        const potentialProfit = coinsPurchased * current;
-        setProfit(potentialProfit);
-      } else {
-        setProfit(null);
-      }
-    } catch (error) {
-      console.error("Error fetching prices:", error);
-      setError(error.message || "Failed to fetch prices. Please try again.");
-    } finally {
-      setCalculating(false);
+    const currentUrl = `https://min-api.cryptocompare.com/data/price?fsym=${coinSymbol}&tsyms=USD&api_key=b4452393ced7caa2721b88f21356f268e663cb18cc669cd8d4c8ee125c368a31`;
+    const currentResponse = await fetch(currentUrl);
+    if (!currentResponse.ok) {
+      throw new Error(`Current price API returned status ${currentResponse.status}`);
     }
-  };
+    const currentData = await currentResponse.json();
+    const current = currentData.USD || "Unavailable";
 
+    setHistoricalPrice(historical);
+    setCurrentPrice(current);
+
+    if (historical && current && fudAmount > 0) {
+      const coinsPurchased = fudAmount / historical;
+      const potentialProfit = coinsPurchased * current;
+      setProfit(potentialProfit);
+    } else {
+      setProfit(null);
+    }
+  } catch (error) {
+    console.error("Error fetching prices:", error);
+    setError(error.message || "Failed to fetch prices. Please try again.");
+  } finally {
+    setCalculating(false);
+  }
+}, [selectedCoin, selectedDate, fudAmount, timestamp]);
+// Automatically calculate on first load if all fields are populated
+useEffect(() => {
+  if (
+    firstLoad &&
+    selectedCoin.length > 0 &&
+    selectedDate &&
+    fudAmount > 0
+  ) {
+    fetchPrices();
+    setFirstLoad(false);
+  }
+}, [firstLoad, selectedCoin, selectedDate, fudAmount, fetchPrices]);
   return (
     <Container fluid className="interior-section" style={{ minHeight: "calc(100vh - 58px)" }}>
       <Container>

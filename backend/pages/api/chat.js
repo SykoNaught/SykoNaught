@@ -102,6 +102,13 @@ export default async function handler(req, res) {
             if (cleanedResponse.includes("User Input: ")) {
                 cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("User Input: "));
             }
+            if (cleanedResponse.includes("(Note:")) {
+                cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("(Note:"));
+            }
+            if (cleanedResponse.includes("Note:")) {
+                cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("Note:"));
+            }
+            
             // Return the cleaned response
             res.status(200).json({ response: cleanedResponse });
         } catch (error) {
