@@ -1,25 +1,34 @@
 {
-    "version": 2,
-    "builds": [
+  "version": 2,
+  "builds": [
       {
-        "src": "frontend/package.json",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "frontend/build" }
+          "src": "frontend/package.json",
+          "use": "@vercel/static-build",
+          "config": { "distDir": "frontend/build" }
       },
       {
-        "src": "backend/next.config.js",
-        "use": "@vercel/next"
+          "src": "backend/next.config.js",
+          "use": "@vercel/next"
       }
-    ],
-    "routes": [
+  ],
+  "routes": [
       {
-        "src": "/api/(.*)",
-        "dest": "/backend/api/$1"
+          "src": "/api/(.*)",
+          "dest": "/backend/api/$1"
       },
       {
-        "src": "/(.*)",
-        "dest": "/frontend/$1"
+          "src": "/(.*)",
+          "dest": "/frontend/$1"
       }
-    ]
-  }
-  
+  ],
+  "headers": [
+      {
+          "source": "/api/(.*)",
+          "headers": [
+              { "key": "Access-Control-Allow-Origin", "value": "*" },
+              { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+              { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+          ]
+      }
+  ]
+}
