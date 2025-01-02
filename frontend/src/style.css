@@ -496,7 +496,11 @@ a.red:hover{
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
 }
-
+@media (max-width: 767px) {
+  .interior-section {
+    padding-top: 100px !important;
+  }
+}
 /* --------- */
 /* Projects */
 /* --------- */
