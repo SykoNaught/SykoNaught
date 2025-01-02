@@ -6,7 +6,14 @@ const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 // Initialize CORS middleware
 const cors = Cors({
     methods: ["POST", "GET", "HEAD"], // Allowed HTTP methods
-    origin: "https://sykonaught.com", // Allowed frontend origin
+    origin: (origin, callback) => {
+        if (origin === "https://sykonaught.com" || origin === undefined) {
+            // Allow specific origin or local requests
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
 });
 
 // Helper function to run middleware
