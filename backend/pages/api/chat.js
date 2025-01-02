@@ -7,7 +7,7 @@ const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
 const cors = Cors({
     methods: ["POST", "GET", "OPTIONS", "HEAD"], // Specify allowed methods
     origin: (origin, callback) => {
-        const allowedOrigins = ["https://sykonaught.com", "http://localhost:3000"];
+        const allowedOrigins = ["https://sykonaught.com", "http://localhost:3000", "http://localhost:3001"];
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
      // Handle preflight requests (OPTIONS)
      if (req.method === "OPTIONS") {
-         res.setHeader("Access-Control-Allow-Origin", "https://sykonaught.com");
+         res.setHeader("Access-Control-Allow-Origin", "https://sykonaught.com, http://localhost:3000, http://localhost:3001");
          res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, HEAD");
          res.setHeader("Access-Control-Allow-Headers", "Content-Type");
          return res.status(204).end();
@@ -99,7 +99,9 @@ export default async function handler(req, res) {
             if (cleanedResponse.includes("Response: ")) {
                 cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("Response: "));
             }
-
+            if (cleanedResponse.includes("User Input: ")) {
+                cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("User Input: "));
+            }
             // Return the cleaned response
             res.status(200).json({ response: cleanedResponse });
         } catch (error) {

@@ -20,6 +20,15 @@ function Projects() {
         <Col md={4} className="project-card">
             <ProjectCard
               imgPath={regret}
+              title="Chat With SykoNaught AI"
+              description="Welcome to my domain, mortal. I’m SykoNaught, your sarcastic, all-knowing crypto overlord. Ask your pathetic questions, and I’ll try not to laugh too hard at your feeble attempts to keep up."
+              internalLink={true}
+              demoLink="/projects/sykochat"
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={regret}
               title="Crypto Regret Calculator"
               description="Plug in the crypto you chickened out on, the date you wimped out, and the cash you didn't spend. Watch in agony as it shows you just how rich you could have been, if only you had the balls back then."
               internalLink={true}

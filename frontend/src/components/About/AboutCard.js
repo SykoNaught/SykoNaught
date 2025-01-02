@@ -17,7 +17,7 @@ function AboutCard() {
             <br /><br />
           </p>
           <p>
-            <a target="_blank" href="https://x.com/sykonaught_x" className="red">Follow me on <BsTwitterX /></a> to witness my shenanigans.
+            <a target="_blank" href="https://x.com/sykonaught_x" rel="noreferrer" className="red">Follow me on <BsTwitterX /></a> to witness my shenanigans.
           </p>
           <p style={{ color: "rgb(140 115 115)",fontStyle: "italic" }}>
             "Sold my SOL for some Shitcoins"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
 import Particle from "../../Particle";
 import { AiOutlineSend } from "react-icons/ai";
 
@@ -41,7 +41,6 @@ const ChatBot = () => {
             }
 
             const data = await response.json();
-            console.log("Response:", data);
 
             const botMessage = { sender: "SykoNaught", text: data.response };
             setMessages((prev) => [...prev, botMessage]);
@@ -65,7 +64,7 @@ const ChatBot = () => {
     };
 
     return (
-        <Container fluid className="interior-section" style={{ minHeight: "calc(100vh - 58px)" }}>
+        <Container fluid className="interior-section" style={{ minHeight: "calc(100vh)" }}>
             <Container>
                 <Row style={{ justifyContent: "center"}}>
                     <Col
@@ -81,10 +80,10 @@ const ChatBot = () => {
                     </Col>
                 </Row>
             </Container>
-            <Container>
+            <Container fluid>
                 <div className="chat-box">
                     <div style={{
-                        height: "calc(50vh - 58px)",
+                        height: "calc(60vh - 58px)",
                         overflowY: "auto",
                         padding: "20px",
                     }}>
