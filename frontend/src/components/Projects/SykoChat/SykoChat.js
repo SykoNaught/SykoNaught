@@ -3,7 +3,7 @@ import { Container, Row, Col} from "react-bootstrap";
 import Particle from "../../Particle";
 import { AiOutlineSend } from "react-icons/ai";
 
-const ChatBot = () => {
+const ChatBot = (props) => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false); // Track loading state
@@ -64,7 +64,7 @@ const ChatBot = () => {
     };
 
     return (
-        <Container fluid className="interior-section" style={{ minHeight: "calc(100vh)" }}>
+        <Container fluid className="interior-section" style={{ minHeight: !props.isMobile ?("calc(100vh - 58px)") : ("calc(100vh)") }}>
             <Container>
                 <Row style={{ justifyContent: "center"}}>
                     <Col
@@ -93,9 +93,11 @@ const ChatBot = () => {
                                 style={{
                                     textAlign: msg.sender === "User" ? "right" : "left",
                                     margin: "10px 0",
+                                    borderTop: "2px solid #333",
+                                    padding: "20px 0px"
                                 }}
                             >
-                                <strong>{msg.sender}:</strong> <p>{msg.text}</p>
+                                <strong>{msg.sender}:</strong> <p style={{margin:"0px"}}>{msg.text}</p>
                             </div>
                         ))}
                         {/* Show loading indicator while waiting for a response */}

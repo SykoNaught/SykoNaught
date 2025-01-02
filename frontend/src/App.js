@@ -16,7 +16,24 @@ import "./style.css";
 import "react-datetime/css/react-datetime.css";
 
 function AppContent() {
-  const location = useLocation(); // Now within Router context
+  const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobileScreen = window.innerWidth <= 768;
+      setIsMobile(isMobileScreen);
+      console.log(`isMobile: ${isMobileScreen}`); // Debugging log
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    console.log(`Current pathname: ${location.pathname}`); // Debugging log
+  }, [location.pathname]);
 
   return (
     <>
@@ -27,11 +44,16 @@ function AppContent() {
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/crypto-regret" element={<SCWCalc />} />
-        <Route path="/projects/sykochat" element={<SykoChat />} />
+        <Route path="/projects/sykochat" isMobile={isMobile} element={<SykoChat />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      {/* Conditionally render the Footer */}
-      {location.pathname !== "/projects/sykochat" && <Footer />}
+      {/* Simplified condition with debugging */}
+      { location.pathname !== "/projects/sykochat" ? (
+        <Footer />
+        ): 
+        !isMobile? (
+          <Footer />
+        ): "" }
     </>
   );
 }
