@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import galaxyPlanner from "../../Assets/Projects/galaxy-planner.png";
 import regret from "../../Assets/Projects/regret.png";
+import sykochat from "../../Assets/Projects/sykochat.png";
 
 function Projects() {
   return (
@@ -19,7 +20,7 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
         <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={regret}
+              imgPath={sykochat}
               title="Chat With SykoNaught AI"
               description="Welcome to my domain, mortal. I’m SykoNaught, your sarcastic, all-knowing crypto overlord. Ask your pathetic questions, and I’ll try not to laugh too hard at your feeble attempts to keep up."
               internalLink={true}
