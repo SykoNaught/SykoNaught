@@ -83,7 +83,7 @@ const ChatBot = (props) => {
             <Container>
                 <div className="chat-box">
                     <div style={{
-                        height: "calc(60vh - 58px)",
+                        height: "calc(80vh - 58px)",
                         overflowY: "auto",
                         padding: "20px",
                     }}>
@@ -141,7 +141,7 @@ const ChatBot = (props) => {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={handleKeyPress} // Listen for the Enter key
-                            placeholder="Type a message"
+                            placeholder="Type a message... (He's An Asshole)"
                             style={{ width: "100%" }}
                         />
                         <button className="send-button" onClick={sendMessage}><AiOutlineSend /></button>
