@@ -22,7 +22,17 @@ html {
 }
 
 body{
-  color:rgb(240, 240, 240);
+  color:#f0f0f0;
+  margin: 0;
+  font-family: "Raleway", serif !important;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to left, rgb(20, 20, 20), rgb(20, 20, 20));
+}
+
+.App{
+  text-align:center;
 }
 .red, .rdtPicker {
   color: var(--imp-text-color) !important;
@@ -46,7 +56,7 @@ button:focus {
   height: 100%;
   z-index: 999999;
   background-color: #0f0f0f;
-  background-image: url(./Assets/pre.svg);
+  background-image: url(../public/images/pre.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -182,7 +192,7 @@ a.red:hover{
 }
 
 .navbar-nav .nav-link {
-  color: white !important;
+  color: #f0f0f0 !important;
   padding-right: 1rem !important;
   padding-left: 1rem !important;
 }
@@ -285,7 +295,7 @@ a.red:hover{
 .home-section {
   position: relative;
   z-index: -1;
-  background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
+  background-image: var(--image-gradient), url(../public/images/home-bg.jpg);
   background-position: top center;
   background-repeat: no-repeat;
   padding-bottom: 30px !important;
@@ -295,7 +305,7 @@ a.red:hover{
 
 .home-content {
   padding: 9rem 0 2rem !important;
-  color: whitesmoke;
+  color: #f0f0f0;
   text-align: left;
 }
 @media (max-width: 767px) {
@@ -354,7 +364,7 @@ a.red:hover{
 }
 
 .home-about-description {
-  color: white !important;
+  color: #f0f0f0 !important;
   padding-top: 100px !important;
   padding-bottom: 20px !important;
   text-align: center;
@@ -369,7 +379,7 @@ a.red:hover{
 .home-about-social {
   text-align: center !important;
   padding-top: 25px;
-  color: white !important;
+  color: #f0f0f0 !important;
 }
 
 .home-about-social-links {
@@ -458,7 +468,7 @@ a.red:hover{
 
 .footer h3 {
   font-size: 1em;
-  color: white !important;
+  color: #f0f0f0 !important;
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
 }
@@ -521,7 +531,7 @@ a.red:hover{
 
 .project-card-view {
   box-shadow: 0 4px 5px 3px rgba(165, 55, 55, 0.45) !important;
-  color: white !important;
+  color: #f0f0f0 !important;
   background-color: #1a1a1a !important;
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
@@ -545,7 +555,7 @@ a.red:hover{
   font-size: 1em;
   border: 2px solid #464646;
   overflow-x: scroll !important;
-  color: white;
+  color: #f0f0f0;
   max-width: 635px;
   width: 100%;
   border-radius:0px;
@@ -553,7 +563,7 @@ a.red:hover{
 .project-copy-btn{
   border:2px solid #464646;
   background-color: #1a1a1a !important;
-  color:white;
+  color:#f0f0f0;
   padding: 5px 10px;
   border-left: 0px;
   transition: all 0.4s ease 0s !important;
@@ -569,13 +579,13 @@ a.red:hover{
 }
 
 .btn-primary {
-  color: #fff !important;
+  color: #f0f0f0 !important;
   background-color: var(--sec-imp-color) !important;
   border-color: var(--sec-imp-color) !important;
 }
 
 .btn-primary:hover {
-  color: #fff !important;
+  color: #f0f0f0 !important;
   background-color: var(--sec-imp-color-alt) !important;
   border-color: var(--sec-imp-color-alt) !important;
 }
@@ -584,7 +594,7 @@ a.red:hover{
   box-shadow: none !important;
 }
 .project-heading {
-  color: white !important;
+  color: #f0f0f0 !important;
   font-size: 2.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
@@ -599,7 +609,7 @@ a.red:hover{
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
-  color: white !important;
+  color: #f0f0f0 !important;
 }
 
 .tech-icons {
@@ -626,7 +636,7 @@ a.red:hover{
 .tech-icons:hover {
   transform: scale(1.05) !important;
   overflow: hidden !important;
-  border: 2.2px solid rgba(230, 115, 115, 0.883) !important;
+  border: 1.7px solid rgba(230, 115, 115, 0.883) !important;
 }
 .tech-icon-images {
   padding: 20px !important;
@@ -635,7 +645,7 @@ a.red:hover{
 
 .quote-card-view {
   border: none !important;
-  color: white !important;
+  color: #f0f0f0 !important;
   background-color: transparent !important;
 }
 
@@ -656,7 +666,7 @@ a.red:hover{
 
 .regret-results-card {
   box-shadow: 0 4px 5px 3px rgba(165, 55, 55, 0.45) !important;
-  color: white !important;
+  color: #f0f0f0 !important;
   background-color: #1a1a1a !important;
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
@@ -674,14 +684,14 @@ a.red:hover{
 
 .chat-box{
   box-shadow: 0 4px 5px 3px rgba(165, 55, 55, 0.45) !important;
-  color: white !important;
+  color: #f0f0f0 !important;
   background-color: #1a1a1a !important;
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
 }
 .sykochat-input{
   background-color: #333333;
-  color: white;
+  color: #f0f0f0;
   border: none;
   padding:5px 10px;
   width: 100%;
@@ -699,7 +709,7 @@ a.red:hover{
   width: 50px;
   height: 34px;
   background-color: #333;
-  color: white;
+  color: #f0f0f0;
   border: 0px;
   border-left: 2px solid #101010;
   border-radius: 0px !important;
@@ -789,7 +799,7 @@ a.red:hover{
     height:8px;
     margin:0px 5px;
     border-radius:50%;
-    background-color:#fff;
+    background-color:#f0f0f0;
     animation: pulse 1.5s infinite;
 }
 @keyframes pulse {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col} from "react-bootstrap";
-import Particle from "../../Particle";
+import Particle from "../../components/Particle";
 import { AiOutlineSend } from "react-icons/ai";
 
 const ChatBot = (props) => {

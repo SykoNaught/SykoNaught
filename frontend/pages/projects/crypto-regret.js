@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
-import Particle from "../../Particle";
+import Particle from "../../components/Particle";
 import { Typeahead } from "react-bootstrap-typeahead";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";

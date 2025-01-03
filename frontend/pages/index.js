@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import sykoFace from "../../Assets/SykoFace.png";
-import Particle from "../Particle";
-import Type from "./Type";
+import Particle from "../components/Particle";
+import Type from "../components/Home/Type";
 
 function Home() {
   return (
@@ -31,7 +30,7 @@ function Home() {
 
             <Col md={5} style={{ paddingBottom: 20, textAlign: "center" }}>
               <img
-                src={sykoFace}
+                src={"/images/SykoFace.png"}
                 alt="home pic"
                 className="img-fluid"
                 style={{ maxHeight: "450px" }}

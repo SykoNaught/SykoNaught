@@ -1,14 +1,13 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../Particle";
-import Techstack from "./Techstack";
-import Aboutcard from "./AboutCard";
-import TradingViewWidget from "../TradingWidget/TradingViewWidgetMini";
+import Particle from "../components/Particle";
+import Techstack from "../components/About/Techstack";
+import Aboutcard from "../components/About/AboutCard";
+import TradingViewWidget from "../components/TradingWidget/TradingViewWidgetMini";
 
 function About() {
   return (
     <Container fluid className="about-section">
-      
       <Container>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
