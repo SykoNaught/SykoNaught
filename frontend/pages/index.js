@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../components/Particle";
 import Type from "../components/Home/Type";
+import Image from "next/image";
 
 function Home() {
   return (
@@ -29,11 +30,12 @@ function Home() {
             </Col>
 
             <Col md={5} style={{ paddingBottom: 20, textAlign: "center" }}>
-              <img
+              <Image
                 src={"/images/SykoFace.png"}
                 alt="home pic"
+                width={377}
+                height={485}
                 className="img-fluid"
-                style={{ maxHeight: "450px" }}
               />
             </Col>
           </Row>

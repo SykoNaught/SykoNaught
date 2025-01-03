@@ -38,12 +38,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
-      
-      </Head>
       <Preloader load={load} />
       <div className={`App ${load ? "no-scroll" : "scroll"}`}>
         <Navbar />

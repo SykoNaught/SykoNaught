@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Link from "next/link";
+import Image from "next/image";
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
@@ -33,7 +34,7 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
-          <img src="/images/logo.png" className="img-fluid logo" alt="brand" />
+          <Image src="/images/logo.png" width={50} height={50} className="img-fluid logo" alt="brand" />
           &nbsp;SykoNaught
         </Navbar.Brand>
         <Navbar.Toggle
