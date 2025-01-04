@@ -40,6 +40,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Preloader load={load} />
       <div className={`App ${load ? "no-scroll" : "scroll"}`}>
         <Navbar />
