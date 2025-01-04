@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Particle from "../components/Particle";
 import Type from "../components/Home/Type";
 import Image from "next/image";
@@ -31,7 +31,7 @@ function Home() {
             content=""/>
       </Head>
       <Container fluid className="home-section" id="home">
-        <Particle />
+        
         <Container className="home-content">
           <Row>
             <Col md={7} className="home-header">
@@ -46,6 +46,7 @@ function Home() {
 
               <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
+                <Button variant="primary"style={{marginTop: "80px"}} href="/projects/sykochat">Chat With Me...</Button>
               </div>
               <div className="shameless-begging">
                 
@@ -63,8 +64,9 @@ function Home() {
             </Col>
           </Row>
         </Container>
+        
       </Container>
-   
+      <Particle />
     </section>
   );
 }

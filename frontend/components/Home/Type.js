@@ -6,10 +6,10 @@ function Type() {
     <Typewriter
       options={{
         strings: [
-          
-          "Coming Soon...",
-          "Under Construction",
-          "How'd You Even Find Me?",
+
+          "How'd You Find Me?",
+          "What do you want?",
+          "Leave me be...",
           
         ],
         autoStart: true,

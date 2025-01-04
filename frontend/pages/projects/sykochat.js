@@ -138,7 +138,7 @@ const ChatBot = (props) => {
                                     margin: "10px 0",
                                 }}
                             >
-                                <strong>SykoNaught:</strong>
+                                <span className="red">SykoNaught:</span>
                                 <div>
                                     <div 
                                         className="pulse-animation"

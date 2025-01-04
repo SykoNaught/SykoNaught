@@ -34,7 +34,7 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
-          <Image src="/images/logo.png" width={50} height={50} className="img-fluid logo" alt="brand" />
+          <Image src="/images/logo.png" width={50} height={28} className="img-fluid logo" alt="brand" />
           &nbsp;SykoNaught
         </Navbar.Brand>
         <Navbar.Toggle
@@ -50,17 +50,17 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Link className="nav-link" href="/" passHref>
+              <Link className="nav-link" href="/" onClick={() => updateExpanded(false)} passHref>
                   <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" href="/about" passHref>
+              <Link className="nav-link" href="/about" onClick={() => updateExpanded(false)} passHref>
                   <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" href="/projects" passHref>
+              <Link className="nav-link" href="/projects" onClick={() => updateExpanded(false)} passHref>
                   <AiOutlineFundProjectionScreen
                     style={{ marginBottom: "2px" }}
                   />{" "}

@@ -33,24 +33,24 @@ function About() {
       </Head>
       <Container>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
-          <Col
-            md={7}
-            className="interior-content"
-            style={{
-              justifyContent: "center",
-            }}
-          >
-            <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              Know My <strong className="red">Name</strong>
-            </h1>
-            <Aboutcard />
-          </Col>
-          <Col
-            md={5}
-            className="interior-content"
-          >
-            <TradingViewWidget />
-          </Col>
+            <Col
+              md={7}
+              style={{
+                justifyContent: "center",
+              }}
+            >
+              <div  className="interior-content">
+                <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
+                  Know My <strong className="red">Name</strong>
+                </h1>
+                <Aboutcard />
+              </div>
+            </Col>
+            <Col md={5}>
+              <div style={{height:"100%"}} className="interior-content">
+                <TradingViewWidget />
+              </div>
+            </Col>
         </Row>
         <div style={{paddingTop:"2rem"}}>
           <h1 className="project-heading">
