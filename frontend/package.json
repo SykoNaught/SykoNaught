@@ -19,7 +19,9 @@
     "react-parallax-tilt": "^1.7.42",
     "react-tooltip": "^5.28.0",
     "react-tsparticles": "^1.42.2",
-    "typewriter-effect": "^2.21.0"
+    "typewriter-effect": "^2.21.0",
+    "@huggingface/inference": "^2.8.1",
+    "cors": "^2.8.5"
   },
   "scripts": {
     "dev": "next dev",
