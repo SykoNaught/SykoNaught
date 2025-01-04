@@ -6,6 +6,7 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { Tooltip } from 'react-tooltip'
 import { AiOutlineCopy } from "react-icons/ai";
+import Head from "next/head";
 
 function RegretCalc() {
   const [coins, setCoins] = useState([]);
