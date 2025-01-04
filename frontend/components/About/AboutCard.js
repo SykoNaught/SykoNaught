@@ -16,7 +16,7 @@ function AboutCard() {
             Just a guy who likes to build things and lose money in the trenches of the memecoin market.
             <br /><br />
           </p>
-          <p>
+          <p className="follow-x-block">
             <a target="_blank" href="https://x.com/sykonaught_x" rel="noreferrer" className="red">Follow me on <BsTwitterX /></a> to witness my shenanigans.
           </p>
           <p style={{ color: "rgb(140 115 115)",fontStyle: "italic" }}>

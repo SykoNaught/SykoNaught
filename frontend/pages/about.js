@@ -47,7 +47,7 @@ function About() {
               </div>
             </Col>
             <Col md={5}>
-              <div style={{height:"100%"}} className="interior-content">
+              <div style={{height:"100%", alignContent: "center"}} className="interior-content">
                 <TradingViewWidget />
               </div>
             </Col>

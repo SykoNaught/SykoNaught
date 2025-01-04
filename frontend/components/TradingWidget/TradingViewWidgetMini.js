@@ -27,7 +27,7 @@ function TradingViewWidgetMini() {
   );
 
   return (
-    <div className="tradingview-widget-container" ref={container}>
+    <div className="tradingview-widget-container" style={{maxHeight:"300px"}} ref={container}>
       <div className="tradingview-widget-container__widget"></div>
     </div>
   );
