@@ -5,6 +5,8 @@ import Preloader from "../components/Pre";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/style.css";
@@ -45,6 +47,8 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} isMobile={isMobile} />
         {!(pathname === "/projects/sykochat" && isMobile) ? <Footer /> : null}
       </div>
+      <Analytics/>
+      <SpeedInsights/>
     </>
   );
 }
