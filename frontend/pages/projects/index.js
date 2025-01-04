@@ -2,11 +2,33 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "../../components/Projects/ProjectCards";
 import Particle from "../../components/Particle";
+import Head from "next/head";
 
 function Projects() {
   return (
     <Container fluid className="project-section">
-      
+      <Head>
+        <title>Projects | SykoNaught.com</title>
+        <meta name="description" content="See what SykoNaught has been up to lately. Gaze upon his works" />
+
+        <meta itemprop="name" content="Projects | SykoNaught"/>
+        <meta itemprop="description" content="See what SykoNaught has been up to lately. Gaze upon his works"/>
+        <meta itemprop="image"
+            content=""/>
+
+        <meta property="og:url" content="https://sykonaught.com"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Projects | SykoNaught"/>
+        <meta property="og:description" content="See what SykoNaught has been up to lately. Gaze upon his works"/>
+        <meta property="og:image"
+            content=""/>
+
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="Projects | SykoNaught"/>
+        <meta name="twitter:description" content="See what SykoNaught has been up to lately. Gaze upon his works"/>
+        <meta name="twitter:image"
+            content=""/>
+      </Head>
       <Container>
         <h1 className="project-heading">
           My Recent <strong className="red">Works</strong>

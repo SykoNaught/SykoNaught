@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col} from "react-bootstrap";
 import Particle from "../../components/Particle";
 import { AiOutlineSend } from "react-icons/ai";
+import Head from "next/head";
 
 const ChatBot = (props) => {
     const [messages, setMessages] = useState([]);
@@ -65,6 +66,28 @@ const ChatBot = (props) => {
 
     return (
         <Container fluid className="interior-section" style={{ minHeight: !props.isMobile ?("calc(100vh - 58px)") : ("calc(100vh)") }}>
+            <Head>
+                <title>Chat With SykoNaught AI | SykoNaught.com</title>
+                <meta name="description" content="Chat with the one and only SykoNaught AI. Learn from his vast knowledge" />
+
+                <meta itemprop="name" content="Chat With SykoNaught AI | SykoNaught.com"/>
+                <meta itemprop="description" content="Chat with the one and only SykoNaught AI. Learn from his vast knowledge"/>
+                <meta itemprop="image"
+                    content="https://sykonaught.com/images/projects/sykochat.png"/>
+
+                <meta property="og:url" content="https://sykonaught.com"/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content="Chat With SykoNaught AI | SykoNaught.com"/>
+                <meta property="og:description" content="Chat with the one and only SykoNaught AI. Learn from his vast knowledge"/>
+                <meta property="og:image"
+                    content="https://sykonaught.com/images/projects/sykochat.png"/>
+
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:title" content="Chat With SykoNaught AI | SykoNaught.com"/>
+                <meta name="twitter:description" content="Chat with the one and only SykoNaught AI. Learn from his vast knowledge"/>
+                <meta name="twitter:image"
+                    content="https://sykonaught.com/images/projects/sykochat.png"/>
+            </Head>
             <Container>
                 <Row style={{ justifyContent: "center"}}>
                     <Col

@@ -3,10 +3,33 @@ import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../components/Particle";
 import Type from "../components/Home/Type";
 import Image from "next/image";
+import Head from "next/head";
 
 function Home() {
   return (
     <section>
+      <Head>
+        <title>Home | SykoNaught.com</title>
+        <meta name="description" content="The God King of the internet realm" />
+
+        <meta itemprop="name" content="Home | SykoNaught.com"/>
+        <meta itemprop="description" content="The God King of the internet realm"/>
+        <meta itemprop="image"
+            content=""/>
+
+        <meta property="og:url" content="https://sykonaught.com"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Home | SykoNaught.com"/>
+        <meta property="og:description" content="The God King of the internet realm"/>
+        <meta property="og:image"
+            content=""/>
+
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="Home | SykoNaught.com"/>
+        <meta name="twitter:description" content="The God King of the internet realm"/>
+        <meta name="twitter:image"
+            content=""/>
+      </Head>
       <Container fluid className="home-section" id="home">
         <Particle />
         <Container className="home-content">
