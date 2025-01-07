@@ -75,7 +75,7 @@ const ChatBot = (props) => {
                 <meta itemprop="image"
                     content="https://sykonaught.com/images/projects/sykochat.png"/>
 
-                <meta property="og:url" content="https://sykonaught.com"/>
+                <meta property="og:url" content="https://sykonaught.com/sykochat"/>
                 <meta property="og:type" content="website"/>
                 <meta property="og:title" content="Chat With SykoNaught AI | SykoNaught.com"/>
                 <meta property="og:description" content="Chat with the one and only SykoNaught AI. Learn from his vast knowledge"/>

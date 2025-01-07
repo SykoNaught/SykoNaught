@@ -742,7 +742,14 @@ a.red:hover{
   max-width: 750px;
   margin-bottom:20px;
 }
-
+.chat-avatar{
+  border-radius:50%;
+  background-color:#141414;
+  border:2px solid #460c0c
+}
+.avatar-wrap{
+  margin-right:10px
+}
 .like-item {
   padding-top: 10px !important;
   font-size: 1.1em !important;

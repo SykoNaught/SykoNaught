@@ -16,7 +16,7 @@ function Projects() {
         <meta itemprop="image"
             content=""/>
 
-        <meta property="og:url" content="https://sykonaught.com"/>
+        <meta property="og:url" content="https://sykonaught.com/projects"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Projects | SykoNaught"/>
         <meta property="og:description" content="See what SykoNaught has been up to lately. Gaze upon his works"/>
@@ -35,14 +35,23 @@ function Projects() {
         </h1>
         <p>Here are a few projects I've worked on recently.</p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-        <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={"/images/Projects/sykochat.png"}
-              title="Chat With SykoNaught AI"
-              description="Welcome to my domain, mortal. I’m SykoNaught, your sarcastic, all-knowing crypto overlord. Ask your pathetic questions, and I’ll try not to laugh too hard at your feeble attempts to keep up."
-              internalLink={true}
-              demoLink="/projects/sykochat"
-            />
+            <Col md={4} className="project-card">
+                    <ProjectCard
+                    imgPath={"/images/Projects/market-mood.png"}
+                    title="Market Mood Indicator"
+                    description="Behold, mortals, the Market Mood Indicator—your feeble attempt to grasp the chaos of the crypto world. This divine tool quantifies the collective emotional state of the crypto market"
+                    internalLink={true}
+                    demoLink="/projects/market-mood"
+                    />
+            </Col>
+            <Col md={4} className="project-card">
+                <ProjectCard
+                imgPath={"/images/Projects/sykochat.png"}
+                title="Chat With SykoNaught AI"
+                description="Welcome to my domain, mortal. I’m SykoNaught, your sarcastic, all-knowing crypto overlord. Ask your pathetic questions, and I’ll try not to laugh too hard at your feeble attempts to keep up."
+                internalLink={true}
+                demoLink="/projects/sykochat"
+                />
           </Col>
           <Col md={4} className="project-card">
             <ProjectCard

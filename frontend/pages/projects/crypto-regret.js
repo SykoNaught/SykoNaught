@@ -162,7 +162,7 @@ useEffect(() => {
           <meta itemprop="image"
               content="https://sykonaught.com/images/projects/sykochat.png"/>
 
-          <meta property="og:url" content="https://sykonaught.com"/>
+          <meta property="og:url" content="https://sykonaught.com/crypto-regret"/>
           <meta property="og:type" content="website"/>
           <meta property="og:title" content="Crypto Regret Calculator | SykoNaught.com"/>
           <meta property="og:description" content="Check out the Crypto Regret Calculator, your personal tormentor for all the wealth you let slip through your fingers. Choose the crypto you balked at, the date you chickened out, and the amount you should've wagered."/>
@@ -170,7 +170,7 @@ useEffect(() => {
               content="https://sykonaught.com/images/projects/sykochat.png"/>
 
           <meta name="twitter:card" content="summary_large_image"/>
-          <meta name="twitter:title" content="Crypto Regret Calculator | SykoNaught.com"/>
+          <meta name="twitter:title" content="Crypto Regret Calculator | SykoNaught.com/"/>
           <meta name="twitter:description" content="Check out the Crypto Regret Calculator, your personal tormentor for all the wealth you let slip through your fingers. Choose the crypto you balked at, the date you chickened out, and the amount you should've wagered."/>
           <meta name="twitter:image"
               content="https://sykonaught.com/images/projects/sykochat.png"/>

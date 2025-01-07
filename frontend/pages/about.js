@@ -18,7 +18,7 @@ function About() {
         <meta itemprop="image"
             content=""/>
 
-        <meta property="og:url" content="https://sykonaught.com"/>
+        <meta property="og:url" content="https://sykonaught.com/about"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Know My Name | SykoNaught.com"/>
         <meta property="og:description" content="Get to know a little bit About The God King of the internet realm"/>
