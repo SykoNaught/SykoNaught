@@ -35,7 +35,7 @@ function Projects() {
         </h1>
         <p>Here are a few projects I've worked on recently.</p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-            <Col md={4} className="project-card">
+            <Col lg={4} md={6} className="project-card">
                     <ProjectCard
                     imgPath={"/images/Projects/market-mood.png"}
                     title="Market Mood Indicator"
@@ -44,7 +44,7 @@ function Projects() {
                     demoLink="/projects/market-mood"
                     />
             </Col>
-            <Col md={4} className="project-card">
+            <Col lg={4} md={6} className="project-card">
                 <ProjectCard
                 imgPath={"/images/Projects/sykochat.png"}
                 title="Chat With SykoNaught AI"
@@ -53,7 +53,7 @@ function Projects() {
                 demoLink="/projects/sykochat"
                 />
           </Col>
-          <Col md={4} className="project-card">
+          <Col lg={4} md={6} className="project-card">
             <ProjectCard
               imgPath={"/images/Projects/regret.png"}
               title="Crypto Regret Calculator"
@@ -62,7 +62,7 @@ function Projects() {
               demoLink="/projects/crypto-regret?c=BTC&d=1295568000&f=3000"
             />
           </Col>
-          <Col md={4} className="project-card">
+          <Col lg={4} md={6} className="project-card">
             <ProjectCard
               imgPath={"/images/Projects/galaxy-planner.png"}
               title="Galaxy Planner"
