@@ -156,7 +156,7 @@ function MarketMood() {
                                             />
                                             <span className="red">SykoNaught</span>
                                         </div>
-                                        <p className="syko-message" style={{maxWidth:"100%", marginBottom:"0px", textAlign:"left"}}>{botMessage}</p>
+                                        <p className="syko-message" style={{maxWidth:"100%", marginBottom:"5px", textAlign:"left", padding:"20px"}}>{botMessage}</p>
                                     </div>
                                     <p style={{fontSize:"12px", color:"#686868", textAlign:"right"}}>This is AI generated and obviously is not financial advice, always do your own research mortal.</p>
                                 </>
