@@ -39,7 +39,7 @@ function Projects() {
                     <ProjectCard
                     imgPath={"/images/Projects/market-mood.png"}
                     title="Market Mood Indicator"
-                    description="Behold, mortals, the Market Mood Indicator—your feeble attempt to grasp the chaos of the crypto world. This divine tool quantifies the collective emotional state of the crypto market"
+                    description="Behold, mortals, the Market Mood Indicator—your feeble attempt to grasp the chaos of the crypto world. This divine tool quantifies the collective emotional state of the crypto market, from trembling Fear to reckless Greed."
                     internalLink={true}
                     demoLink="/projects/market-mood"
                     />

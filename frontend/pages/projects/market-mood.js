@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Head from 'next/head';
 import Image from 'next/image';
 import Particle from "../../components/Particle";
 import MoodMeter from '../../components/Projects/Market Mood/MoodMeter';
 
-const MarketMood = () => {
+function MarketMood() {
   const [mood, setMood] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(null);
-  const [botMessage, setBotMessage] = useState(null); // State for SykoNaught's message
+  const [botMessage, setBotMessage] = useState(null);
   const [messageLoading, setMessageLoading] = useState(false); 
 
   useEffect(() => {
@@ -34,20 +34,18 @@ const MarketMood = () => {
   useEffect(() => {
     if (timeRemaining > 0) {
       const interval = setInterval(() => {
-        setTimeRemaining((prev) => Math.max(prev - 1, 0)); // Safely decrement timer
+        setTimeRemaining((prev) => Math.max(prev - 1, 0));
       }, 1000);
 
-      return () => clearInterval(interval); // Cleanup on unmount
+      return () => clearInterval(interval);
     }
   }, [timeRemaining]);
   useEffect(() => {
     if (mood && mood.classification) {
-      sendMessage(); // Trigger sendMessage on page load
+      sendMessage();
     }
   }, [mood]);
   
-
-  // Helper function to format time
   const formatTime = (seconds) => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
@@ -55,41 +53,41 @@ const MarketMood = () => {
     return `${hours}h ${minutes}m ${secs}s`;
   };
     
-  const sendMessage = async () => {
+  const sendMessage = useCallback(async () => {
     if (!mood || !mood.classification) {
       console.error("Mood classification is missing!");
       return;
     }
-
-    const userMessage = { sender: "User", text: mood.classification };
-    setMessageLoading(true);
-
+  
     try {
-      // Make POST request to the API
+      setMessageLoading(true);
+  
       const response = await fetch("/api/sykoMoodChat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage.text }),
+        body: JSON.stringify({ message: mood.classification }),
       });
-
+  
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
       }
-
+  
       const data = await response.json();
-
-      // Display the bot's response
-      const botMessageText = data.response;
-      setBotMessage(botMessageText);
-
-      console.log("SykoNaught's Response:", botMessageText);
+      setBotMessage(data.response);
     } catch (error) {
       console.error("Error sending message:", error);
       setError("Failed to fetch SykoNaught's response");
     } finally {
       setMessageLoading(false);
     }
-  };
+  }, [mood]);
+  
+  useEffect(() => {
+    if (mood && mood.classification) {
+      sendMessage();
+    }
+  }, [mood, sendMessage]);
+
     return (
         <Container fluid className="interior-section" style={{ minHeight: "calc(100vh - 58px)"}}>
             <Head>
@@ -162,16 +160,13 @@ const MarketMood = () => {
                                     </div>
                                     <p style={{fontSize:"12px", color:"#686868", textAlign:"right"}}>This is AI generated and obviously is not financial advice, always do your own research mortal.</p>
                                 </>
-                                
                             )}
-                            
                         </div>
                     )}
                     </Col>
                 </Row>
             </Container>
             <Particle />
-            
         </Container>
     );
 };

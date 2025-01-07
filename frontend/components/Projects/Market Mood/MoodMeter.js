@@ -37,4 +37,6 @@ const MoodMeter = React.memo(({ value }) => {
   );
 });
 
+MoodMeter.displayName = "MoodMeter";
+
 export default MoodMeter;
