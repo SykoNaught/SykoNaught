@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
-import debounce from "lodash.debounce";
 
 const MoodMeter = React.memo(({ value }) => {
   const [dimensions, setDimensions] = useState({ width: 500, height: 300 });
 
+  // Update dimensions based on window size
   useEffect(() => {
     const updateDimensions = () => {
       const screenWidth = window.outerWidth;
-      if (screenWidth < 768) {
-        // Mobile size
-        setDimensions({ width: screenWidth * 0.85, height: screenWidth * 0.55 });
-      } else {
-        // Desktop size
-        setDimensions({ width: 500, height: 300 });
-      }
+      const newDimensions =
+        screenWidth < 768
+          ? { width: screenWidth * 0.85, height: screenWidth * 0.55 }
+          : { width: 500, height: 300 };
+  
+      // Update state only if dimensions have changed
+      setDimensions((prevDimensions) =>
+        prevDimensions.width !== newDimensions.width ||
+        prevDimensions.height !== newDimensions.height
+          ? newDimensions
+          : prevDimensions
+      );
     };
-
-    // Debounce the resize handler
-    const debouncedUpdateDimensions = debounce(updateDimensions, 200);
-
-    // Run on component mount and add resize event listener
+  
     updateDimensions();
-    window.addEventListener("resize", debouncedUpdateDimensions);
-
-    return () => {
-      window.removeEventListener("resize", debouncedUpdateDimensions);
-      debouncedUpdateDimensions.cancel(); // Clean up debounce
-    };
+    window.addEventListener("resize", updateDimensions);
+  
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
+  
 
   return (
     <div style={{ textAlign: "center" }}>
