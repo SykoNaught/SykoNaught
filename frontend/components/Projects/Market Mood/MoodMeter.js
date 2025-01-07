@@ -7,10 +7,10 @@ const MoodMeter = React.memo(({ value }) => {
   // Update dimensions based on window size
   useEffect(() => {
     const updateDimensions = () => {
-      const screenWidth = window.innerWidth;
+      const screenWidth = window.outerWidth;
       if (screenWidth < 768) {
         // Mobile size
-        setDimensions({ width: screenWidth * 0.65, height: screenWidth * 0.35 });
+        setDimensions({ width: screenWidth * 0.85, height: screenWidth * 0.55 });
       } else {
         // Desktop size
         setDimensions({ width: 500, height: 300 });
