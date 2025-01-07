@@ -145,7 +145,7 @@ function MarketMood() {
                             {messageLoading && <Spinner animation="border" />}
                             {botMessage && (
                                 <>
-                                    <div className="d-flex space-between align-items-center">
+                                    <div className="d-md-flex space-between align-items-center">
                                         <div className="avatar-wrap">
                                         <Image
                                             src={"/images/SykoFace-xs.png"}
