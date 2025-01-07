@@ -40,11 +40,6 @@ function MarketMood() {
       return () => clearInterval(interval);
     }
   }, [timeRemaining]);
-  useEffect(() => {
-    if (mood && mood.classification) {
-      sendMessage();
-    }
-  }, [mood]);
   
   const formatTime = (seconds) => {
     const hours = Math.floor(seconds / 3600);
