@@ -10,7 +10,7 @@ const MoodMeter = React.memo(({ value }) => {
       const screenWidth = window.innerWidth;
       if (screenWidth < 768) {
         // Mobile size
-        setDimensions({ width: screenWidth * 0.8, height: screenWidth * 0.5 });
+        setDimensions({ width: screenWidth * 0.7, height: screenWidth * 0.4 });
       } else {
         // Desktop size
         setDimensions({ width: 500, height: 300 });
