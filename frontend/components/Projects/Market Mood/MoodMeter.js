@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
+import debounce from "lodash.debounce";
 
 const MoodMeter = React.memo(({ value }) => {
   const [dimensions, setDimensions] = useState({ width: 500, height: 300 });
 
-  // Update dimensions based on window size
   useEffect(() => {
     const updateDimensions = () => {
       const screenWidth = window.outerWidth;
@@ -17,10 +17,17 @@ const MoodMeter = React.memo(({ value }) => {
       }
     };
 
-    updateDimensions(); // Run on component mount
-    window.addEventListener("resize", updateDimensions); // Listen for window resize
+    // Debounce the resize handler
+    const debouncedUpdateDimensions = debounce(updateDimensions, 200);
 
-    return () => window.removeEventListener("resize", updateDimensions); // Cleanup listener
+    // Run on component mount and add resize event listener
+    updateDimensions();
+    window.addEventListener("resize", debouncedUpdateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", debouncedUpdateDimensions);
+      debouncedUpdateDimensions.cancel(); // Clean up debounce
+    };
   }, []);
 
   return (
