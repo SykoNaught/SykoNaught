@@ -924,9 +924,12 @@ a.red:hover{
   display:flex;
   margin-top:10px;
   overflow:hidden;
-
 }
-
+@media (max-width: 767px) {
+  .syko-news-analysis{
+    width:100% !important;
+  }
+}
 .syko-news-analysis:hover, .syko-news-analysis.active{
   width:100%;
   cursor:pointer;

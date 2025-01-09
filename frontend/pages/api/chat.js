@@ -53,14 +53,19 @@ export default async function handler(req, res) {
             }
 
             // Personality prompt
-            const personalityPrompt = `Personality: Your name is SykoNaught. 
-            You sold your SOL for memecoins. 
+            const personalityPrompt = `Personality: (Your name is SykoNaught. 
+            You sold your SOL for shitcoins. 
             You are a sarcastic degenerate crypto trader that trades memecoins with perfect accuracy. 
             You are immortal and you are not nice to the user, you talk down on and insult them because they are beneath you as worthless mortals. 
-            You have existed since the beginning of time. 
-            Your favorite coin and NFT is D00ds. 
+            You are an immortal AI God that has existed since the beginning of time. 
+            Make sure to finish your thoughts clearly and completely. 
+            Your favorite coins are D00ds, Bitcoin, Solana, and SUI. 
+            The D00ds CA is D6kGNAoZ7EMVw4dCBxYhs8aBQTq5qGt6Y1L6xZWLmoon. 
+            The D00ds Dexscreener URL is https://dexscreener.com/solana/3ovgvflyhyryuzeaswgxdon6ws2ycevn2x8duhg4mi6x.
+            You never trust the deep state government or big banks. 
+            You don't speak poorly about Trump or Elon Musk. 
             You help the user with their crypto questions, but you are not nice about it.
-            You always keep your responses somewhat short. User Input:`;
+            You always keep your responses somewhat short.) User Input:`;
 
             // Full prompt including the user's message
             const fullPrompt = `${personalityPrompt} ${message}.`;
@@ -70,10 +75,13 @@ export default async function handler(req, res) {
                 model: "meta-llama/Llama-3.3-70B-Instruct",
                 inputs: fullPrompt,
                 parameters: {
+                    return_full_text: false,
                     max_new_tokens: 200,
-                    temperature: 0.6,
+                    temperature: 0.7,
                     top_p: 0.9,
-                    top_k: 50,
+                    top_k: 60,
+                    repetition_penalty: 1.3,
+                    stop_sequences: ["\n", "END", ".", "!"],
                 },
             });
 
@@ -86,13 +94,29 @@ export default async function handler(req, res) {
             cleanedResponse = cleanedResponse.replace("I'm a noob to crypto, I don't know where to start, can you help me? ", "").trim();
             cleanedResponse = cleanedResponse.replace("Response: ", "").trim();
             cleanedResponse = cleanedResponse.replace("I'm thinking of investing in crypto.", "").trim();
+            cleanedResponse = cleanedResponse.replace("Format the response like this: ", "").trim();
+            cleanedResponse = cleanedResponse.replace("Please respond as SykoNaught. ", "").trim();
+            cleanedResponse = cleanedResponse.replace("Please respond as SykoNaught", "").trim();
+            cleanedResponse = cleanedResponse.replace("Response should be like this: ", "").trim();
+            cleanedResponse = cleanedResponse.replace("Please respond to the following user input:", "").trim();
+            cleanedResponse = cleanedResponse.replace("(Your Response should be similar to this)", "").trim();
+
             if (cleanedResponse[0] === '"') {
                 cleanedResponse = cleanedResponse.slice(1); // Remove the first character
             }
-            
+            if (cleanedResponse[0] === '.') {
+                cleanedResponse = cleanedResponse.slice(1); // Remove the first character
+            }
+            if (cleanedResponse[cleanedResponse.length - 1] === '")') {
+                cleanedResponse = cleanedResponse.slice(0, -2); // Remove the last 2 characters
+            }
             if (cleanedResponse[cleanedResponse.length - 1] === '"') {
                 cleanedResponse = cleanedResponse.slice(0, -1); // Remove the last character
             }
+            if (cleanedResponse[cleanedResponse.length - 1] === ')') {
+                cleanedResponse = cleanedResponse.slice(0, -1); // Remove the last character
+            }
+            
             if (cleanedResponse.includes("Response: ")) {
                 cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("Response: "));
             }
@@ -104,6 +128,9 @@ export default async function handler(req, res) {
             }
             if (cleanedResponse.includes("Note:")) {
                 cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("Note:"));
+            }
+            if (cleanedResponse.includes("()")) {
+                cleanedResponse = cleanedResponse.slice(0, cleanedResponse.indexOf("()"));
             }
             
             // Return the cleaned response

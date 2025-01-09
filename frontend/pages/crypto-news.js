@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Spinner, Button } from "react-bootstrap";
 import Particle from "../components/Particle";
 import Head from "next/head";
 import Image from "next/image"
+import he from "he";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 function News({ initialNews, initialNext, initialPrev, initialPage }) {
@@ -89,19 +90,7 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
   }, [selectedCurrencies, applyCurrencyFilter]);
 
   function decodeHtmlEntities(str) {
-    if (!str) return str;
-  
-    return str
-      .replace(/&#8217;/g, "'’'")
-      .replace(/&#8221;/g, "”")
-      .replace(/&#8220;/g, "“")
-      .replace(/&#8216;/g, "‘")
-      .replace(/&quot;/g, '"')
-      .replace(/&apos;/g, "'")
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&#8230;/g, "...");
+    return he.decode(str || "");
   }
 
   const fetchPage = async (url, direction) => {
@@ -109,7 +98,13 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setNewsArticles(data.results || []);
+      const updatedArticles = data.results.map((article) => ({
+        ...article,
+        formattedPublishedAt: article.published_at
+          ? new Date(article.published_at).toLocaleString()
+          : "Unknown Date",
+      }));
+      setNewsArticles(updatedArticles || []);
       setNextPage(data.next);
       setPrevPage(data.previous);
       setCurrentPage((currentPage) => (direction === "next" ? currentPage + 1 : currentPage - 1));
@@ -135,20 +130,21 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
     };
   }, []);
 
-  const fetchSykoAnalysis = async (title, id) => {
+  const fetchSykoAnalysis = async (title, description, id) => {
     const key = id;
+    const input = `${title}. ${description}`;
     setArticleStates((prev) => ({
       ...prev,
       [key]: { messageLoading: true, botMessage: null },
     }));
-  
+    console.log(input)
     try {
       const response = await fetch("/api/sykoNewsAnalysis", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: title }),
+        body: JSON.stringify({ message: input }),
       });
   
       if (!response.ok) {
@@ -169,25 +165,50 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
       }));
     }
   };
+
+  const getFirstTwoSentences = (description) => {
+    if (!description) return "";
+    const sentences = [];
+    let currentSentence = "";
   
+    for (let i = 0; i < description.length; i++) {
+      const char = description[i];
+      currentSentence += char;
+  
+      if (char === "." || char === "!" || char === "?") {
+        const nextChar = description[i + 1];
+        if (!nextChar || nextChar === " " || nextChar === "\n") {
+          sentences.push(currentSentence.trim());
+          currentSentence = "";
+        }
+      }
+    }
+    if (currentSentence.trim()) {
+      sentences.push(currentSentence.trim());
+    }
+    return sentences.slice(0, 2).join(" ");
+  };
 
   return (
     <Container fluid className="interior-section" style={{ minHeight: "calc(100vh - 58px)" }}>
       <Head>
-        <title>News | SykoNaught.com</title>
-        <meta name="description" content="The God King of the internet realm" />
-        <meta itemProp="name" content="News | SykoNaught.com" />
-        <meta itemProp="description" content="Get the latest crypto news aggregated by The God King of the internet realm" />
+        <title>Latest Crypto News | SykoNaught.com</title>
+        <meta name="description" content="Get the latest crypto news analyzed and commentated by SykoNaught AI, self-proclaimed as mankind's greatest crypto trader and analyzer." />
+        <meta itemProp="name" content="Latest Crypto News | SykoNaught.com" />
+        <meta itemProp="description" content="Get the latest crypto news analyzed and commentated by SykoNaught AI, self-proclaimed as mankind's greatest crypto trader and analyzer." />
         <meta itemProp="image" content="" />
-        <meta property="og:url" content="https://sykonaught.com/news" />
+
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="News | SykoNaught.com" />
-        <meta property="og:description" content="Get the latest crypto news aggregated by The God King of the internet realm" />
+        <meta property="og:url" content="https://sykonaught.com/crypto-news" />
+        <meta property="og:title" content="Latest Crypto News | SykoNaught.com" />
+        <meta property="og:description" content="Get the latest crypto news analyzed and commentated by SykoNaught AI, self-proclaimed as mankind's greatest crypto trader and analyzer." />
         <meta property="og:image" content="" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="News | SykoNaught.com" />
-        <meta name="twitter:description" content="Get the latest crypto news aggregated by The God King of the internet realm" />
-        <meta name="twitter:image" content="" />
+        
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://sykonaught.com/crypto-news" />
+        <meta property="twitter:title" content="Latest Crypto News | SykoNaught.com" />
+        <meta property="twitter:description" content="Get the latest crypto news analyzed and commentated by SykoNaught AI, self-proclaimed as mankind's greatest crypto trader and analyzer." />
+        <meta property="twitter:image" content="" />
       </Head>
       <Container  fluid={true}>
         <Row style={{ justifyContent: "center" }}>
@@ -195,7 +216,7 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
                 <h1 className="interior-heading">
                     Latest Crypto <strong className="red">News</strong>
                 </h1>
-                <p>Welcome to SykoNaught's Crypto News Hub, where your mortal minds attempt to grasp the chaos of the crypto market. 
+                <p>Welcome to SykoNaught's Crypto News Hub, where I assist your mortal minds to grasp the chaos of the crypto market. 
                     Click my face
                     &nbsp;<Image
                         src={"/images/SykoFace-xs.png"}
@@ -204,9 +225,8 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
                         height={20}
                         className="img-fluid chat-avatar"
                     />&nbsp;
-                    next to any article, and I'll deliver my unrivaled analysis with the perfect mix of sarcasm and brilliance. 
-                    As an immortal crypto master, I've seen it all, and trust me—you haven't. 
-                    Dare to seek my wisdom? Click away, if you think you can handle it.</p>
+                    beneath any article, and I'll deliver my unrivaled analysis with the perfect mix of sarcasm and brilliance. 
+                    Ready to peer into the mind of an immortal crypto master? Click away... if you think you're ready.</p>
             </Col>
         </Row>
         <Row className="mt-5">
@@ -267,12 +287,17 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
                     <Row>
                     {newsArticles.length > 0 ? (
                         newsArticles.map((article) => {
-                        const key = article.id; // Use a unique property like title or URL
-                        const articleState = articleStates[key] || {}; // Default to an empty state
-
+                        const key = article.id;
+                        const articleState = articleStates[key] || {};
+                        var analysisDescription
+                        article.metadata && article.metadata.description ?(
+                          analysisDescription = getFirstTwoSentences(article.metadata.description)
+                        ):(
+                          analysisDescription = ""
+                        )
                     return (
                         <Col md={12} key={key || index}>
-                            <Card className="news-card" onClick={() => fetchSykoAnalysis(article.title, key)}>
+                            <Card className="news-card" onClick={() => fetchSykoAnalysis(article.title, analysisDescription, key)}>
                                 <Card.Body>
                                   <div className="news-data">
                                     <div className="news-source mb-1">{article.formattedPublishedAt || "Date Not Available"} | {article.source.title}</div>
