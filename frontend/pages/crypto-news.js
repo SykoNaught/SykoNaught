@@ -39,9 +39,13 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setNewsArticles(data.results || []);
-      setNextPage(data.next);
-      setPrevPage(data.previous);
+      const updatedArticles = data.results.map((article) => ({
+        ...article,
+        formattedPublishedAt: article.published_at
+          ? new Date(article.published_at).toLocaleString()
+          : "Unknown Date",
+      }));
+      setNewsArticles(updatedArticles);
     } catch (error) {
       console.error("Error fetching news:", error);
     } finally {
@@ -271,7 +275,7 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
                             <Card className="news-card" onClick={() => fetchSykoAnalysis(article.title, key)}>
                                 <Card.Body>
                                   <div className="news-data">
-                                    <div className="news-source mb-1">{article.formattedPublishedAt} | {article.source.title}</div>
+                                    <div className="news-source mb-1">{article.formattedPublishedAt || "Date Not Available"} | {article.source.title}</div>
                                         <div className="news-currencies">
                                             {article.currencies && article.currencies.length > 0 ? (
                                             (() => {
@@ -362,9 +366,12 @@ export async function getServerSideProps() {
     if (!response.ok) throw new Error(`API responded with status ${response.status}`);
 
     const data = await response.json();
+
     const newsArticles = data.results.map((article) => ({
       ...article,
-      formattedPublishedAt: new Date(article.published_at).toLocaleString(),
+      formattedPublishedAt: article.published_at
+        ? new Date(article.published_at).toLocaleString()
+        : "Unknown Date",
     }));
 
     return {
