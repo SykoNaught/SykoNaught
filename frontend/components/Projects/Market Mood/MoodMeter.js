@@ -58,8 +58,8 @@ const MoodMeter = React.memo(({ value }) => {
         focusable={true}
         needleTransitionDuration={2000}
         needleTransition="easeElastic"
-        height={dimensions.height} // Dynamic height
-        width={dimensions.width} // Dynamic width
+        height={dimensions.height}
+        width={dimensions.width}
       />
     </div>
   );

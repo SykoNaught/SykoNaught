@@ -8,6 +8,7 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineRead
 } from "react-icons/ai";
 
 function NavBar() {
@@ -32,7 +33,7 @@ function NavBar() {
       expand="md"
       className={navColour ? "sticky" : "navbar"}
     >
-      <Container>
+      <Container fluid>
         <Navbar.Brand href="/" className="d-flex">
           <Image src="/images/logo.png" width={50} height={28} className="img-fluid logo" alt="brand" />
           &nbsp;SykoNaught
@@ -52,6 +53,11 @@ function NavBar() {
             <Nav.Item>
               <Link className="nav-link" href="/" onClick={() => updateExpanded(false)} passHref>
                   <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link className="nav-link" href="/crypto-news" onClick={() => updateExpanded(false)} passHref>
+                  <AiOutlineRead style={{ marginBottom: "2px" }} /> Crypto News
               </Link>
             </Nav.Item>
             <Nav.Item>

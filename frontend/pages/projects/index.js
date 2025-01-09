@@ -30,10 +30,15 @@ function Projects() {
             content=""/>
       </Head>
       <Container>
-        <h1 className="project-heading">
-          My Recent <strong className="red">Works</strong>
-        </h1>
-        <p>Here are a few projects I've worked on recently.</p>
+        <Row>
+            <Col xs={12}>
+                <h1 className="interior-heading">
+                    My Recent <strong className="red">Works</strong>
+                </h1>
+                <p>Here are a few projects I've worked on recently.</p>
+            </Col>
+        </Row>
+        
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
             <Col lg={4} md={6} className="project-card">
                     <ProjectCard

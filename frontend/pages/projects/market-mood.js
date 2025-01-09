@@ -121,8 +121,8 @@ function MarketMood() {
                             This divine tool quantifies the collective emotional state of the crypto market, from trembling Fear to reckless Greed. 
                             When Fear dominates, mortals panic-sell like sheep, paving the way for the brave to buy. 
                             When Greed takes over, fools throw everything into moonshots, only to weep later. 
-                            I’ve distilled the madness into a single score—use it wisely, or let it amuse me as you flail in the tides of emotion. 
-                            The market’s mood is laid bare; the rest is up to you.</p>
+                            I've distilled the madness into a single score—use it wisely, or let it amuse me as you flail in the tides of emotion. 
+                            The market's mood is laid bare; the rest is up to you.</p> 
                     </Col>
                 </Row>
                 <Row>
