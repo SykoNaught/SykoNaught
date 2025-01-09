@@ -16,9 +16,17 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
   const [topicsExpanded, setTopicsExpanded] = useState(true);
   const [currenciesExpanded, setCurrenciesExpanded] = useState(true);
 
-  const [articleStates, setArticleStates] = useState({});
+  const [articleStates, setArticleStates] = useState(
+    initialNews.reduce((acc, article) => {
+      acc[article.id] = { messageLoading: false, botMessage: null };
+      return acc;
+    }, {})
+  );
 
-  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 768;
+  const isMobile = () => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth <= 768;
+  };
 
   const filters = ["rising", "hot", "bullish", "bearish", "important"];
   const currencies = ["BTC", "ETH", "DOGE", "SOL", "ADA", "XRP", "BNB"];
@@ -118,7 +126,9 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
     updateStateBasedOnScreen();
     window.addEventListener("resize", updateStateBasedOnScreen);
   
-    return () => window.removeEventListener("resize", updateStateBasedOnScreen);
+    return () => {
+      window.removeEventListener("resize", updateStateBasedOnScreen);
+    };
   }, []);
 
   const fetchSykoAnalysis = async (title, id) => {
@@ -257,12 +267,11 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
                         const articleState = articleStates[key] || {}; // Default to an empty state
 
                     return (
-
-                        <Col md={12} key={key}>
+                        <Col md={12} key={key || index}>
                             <Card className="news-card" onClick={() => fetchSykoAnalysis(article.title, key)}>
                                 <Card.Body>
                                   <div className="news-data">
-                                    <div className="news-source mb-1">{new Date(article.published_at).toLocaleString()} | {article.source.title}</div>
+                                    <div className="news-source mb-1">{article.formattedPublishedAt} | {article.source.title}</div>
                                         <div className="news-currencies">
                                             {article.currencies && article.currencies.length > 0 ? (
                                             (() => {
@@ -289,7 +298,7 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
                                         ? article.metadata.description.length > 400
                                             ? `${decodeHtmlEntities(article.metadata.description.slice(0, 400))}`
                                             : decodeHtmlEntities(article.metadata.description) + ""
-                                        : ""}
+                                        : "No description available."}
                                     </div>
                                         
                                     <div className={`syko-news-analysis ${
@@ -353,7 +362,10 @@ export async function getServerSideProps() {
     if (!response.ok) throw new Error(`API responded with status ${response.status}`);
 
     const data = await response.json();
-    const newsArticles = data.results || [];
+    const newsArticles = data.results.map((article) => ({
+      ...article,
+      formattedPublishedAt: new Date(article.published_at).toLocaleString(),
+    }));
 
     return {
       props: {
