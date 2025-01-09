@@ -850,6 +850,10 @@ a.red:hover{
   margin-bottom:0px;
   display: flex;
   align-items: center;
+  word-wrap: break-word; 
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .news-filter-wrapper{
