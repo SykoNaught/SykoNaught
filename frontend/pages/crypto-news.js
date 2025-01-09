@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col, Card, Spinner, Button } from "react-bootstrap";
 import Particle from "../components/Particle";
 import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image"
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
@@ -42,13 +41,13 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
     }
   };
 
-  const buildQueryUrl = () => {
+  const buildQueryUrl = useCallback(() => {
     const baseUrl = "/api/newsFilterProxy";
     const filterParam = selectedFilter ? `filter=${selectedFilter}` : "";
     const currenciesParam = selectedCurrencies.length > 0 ? `currencies=${selectedCurrencies.join(",")}` : "";
     const queryParams = [filterParam, currenciesParam].filter(Boolean).join("&");
     return `${baseUrl}?${queryParams}`;
-  };
+  }, [selectedFilter, selectedCurrencies]);
 
   const applyFilter = (filter) => {
     const newFilter = selectedFilter === filter ? null : filter;
@@ -59,11 +58,11 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
     fetchNews(queryUrl);
   };
 
-  const applyCurrencyFilter = () => {
-    setCurrentPage(1); 
+  const applyCurrencyFilter = useCallback(() => {
+    setCurrentPage(1);
     const queryUrl = buildQueryUrl();
     fetchNews(queryUrl);
-  };
+  }, [buildQueryUrl]);
 
   const toggleCurrency = (currency) => {
     if (selectedCurrencies.includes(currency)) {
@@ -75,7 +74,7 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
 
   useEffect(() => {
     applyCurrencyFilter();
-  }, [selectedCurrencies]);
+  }, [selectedCurrencies, applyCurrencyFilter]);
 
   function decodeHtmlEntities(str) {
     if (!str) return str;
@@ -346,27 +345,28 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
   );
 }
 export async function getServerSideProps() {
-    const apiKey = process.env.CRYPTOPANIC_API_KEY;
-    const apiUrl = `https://cryptopanic.com/api/pro/v1/posts/?auth_token=${apiKey}&public=true&metadata=true`;
-  
-    console.log("API URL:", apiUrl);
-console.log("API Key Length:", apiKey ? apiKey.length : "Not Set");
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      const newsArticles = data.results || [];
-      return {
-        props: {
-          initialNews: newsArticles,
-          initialNext: data.next || null,
-          initialPrev: data.previous || null,
-          initialPage: 1,
-        },
-      };
-    } catch (error) {
-      console.error("Error fetching news:", error);
-      return { props: { initialNews: [], initialNext: null, initialPrev: null, initialPage: 1 } };
-    }
+  const apiKey = process.env.CRYPTOPANIC_API_KEY;
+  const apiUrl = `https://cryptopanic.com/api/pro/v1/posts/?auth_token=${apiKey}&public=true&metadata=true`;
+
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) throw new Error(`API responded with status ${response.status}`);
+
+    const data = await response.json();
+    const newsArticles = data.results || [];
+
+    return {
+      props: {
+        initialNews: newsArticles,
+        initialNext: data.next || null,
+        initialPrev: data.previous || null,
+        initialPage: 1,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching news:", error.message);
+    return { props: { initialNews: [], initialNext: null, initialPrev: null, initialPage: 1 } };
   }
+}
 
 export default News;

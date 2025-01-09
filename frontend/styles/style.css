@@ -784,6 +784,11 @@ a.red:hover{
   transition: all 0.5s ease 0s !important;
   padding: 2em;
 }
+@media (max-width: 767px) {
+  .news-wrapper{
+    padding: 0px;
+  }
+}
 .news-card{
   background-color:unset;
   text-align:left;
@@ -845,6 +850,11 @@ a.red:hover{
   justify-content:space-between;
   align-items:center;
   margin-top:5px;
+}
+@media (max-width: 767px) {
+  .news-card .news-data {
+    display:block;
+  }
 }
 .news-card .card-text{
   font-size:0.8em;
