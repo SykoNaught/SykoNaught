@@ -442,6 +442,7 @@ a.red:hover{
   display: inline-block !important;
   padding-right: 15px;
   padding-left: 15px;
+  font-size:1.2em;
 }
 
 .icon-colour {
@@ -455,25 +456,13 @@ a.red:hover{
   background-color: rgb(15, 15, 15);
   bottom: 0 !important;
   padding-top: 10px !important;
-  padding-bottom: 8px !important ;
-}
-.footer-copyright {
-  text-align: center !important;
+  padding-bottom: 8px !important;
+  font-size:.8em;
 }
 
 .footer-body {
   z-index: 1;
   text-align: center !important;
-}
-
-@media (max-width: 767px) {
-  .footer-copyright {
-    text-align: center !important;
-  }
-
-  .footer-body {
-    text-align: center !important;
-  }
 }
 
 .footer h3 {

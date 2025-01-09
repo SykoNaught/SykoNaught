@@ -137,7 +137,6 @@ function News({ initialNews, initialNext, initialPrev, initialPage }) {
       ...prev,
       [key]: { messageLoading: true, botMessage: null },
     }));
-    console.log(input)
     try {
       const response = await fetch("/api/sykoNewsAnalysis", {
         method: "POST",

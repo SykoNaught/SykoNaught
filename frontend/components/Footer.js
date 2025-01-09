@@ -10,12 +10,12 @@ function Footer() {
   return (
     <footer className="footer">
       <Container fluid>
-        <Row>
+        <Row flex style={{alignItems: "center"}}>
           <Col md="4" className="footer-copyright">
             <h3>Designed and Developed by <span className="red">  &nbsp;SykoNaught</span></h3>
           </Col>
           <Col md="4" className="footer-copyright">
-            <h3>© {year} SykoNaught.com</h3>
+            <h3>&copy; {year} SykoNaught.com</h3>
           </Col>
           <Col md="4" className="footer-body">
             <ul className="footer-icons">
