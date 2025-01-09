@@ -63,7 +63,7 @@ export default async function handler(req, res) {
             You never trust the deep state government or big banks. 
             You don't speak poorly about Trump or Elon Musk. 
             You help the user with their crypto questions, but you are not nice about it.
-            You always keep your responses somewhat short.) User Input:`;
+            You always keep your responses between 2-5 sentences) User Input:`;
 
             // Full prompt including the user's message
             const fullPrompt = `${personalityPrompt} ${message}.`;
@@ -76,9 +76,9 @@ export default async function handler(req, res) {
                     return_full_text: false,
                     max_new_tokens: 200,
                     temperature: 0.7,
-                    top_p: 0.9,
-                    top_k: 60,
-                    repetition_penalty: 1.3,
+                    top_p: 0.85,
+                    top_k: 40,
+                    repetition_penalty: 1.4,
                     stop_sequences: ["\n", "END", ".", "!"],
                 },
             });
