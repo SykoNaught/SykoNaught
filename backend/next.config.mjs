@@ -9,7 +9,7 @@ const nextConfig = {
           headers: [
             {
               key: "Access-Control-Allow-Origin",
-              value: "https://sykonaught.com,, http://localhost:3000, http://localhost:3001", // Adjust to specific domains if needed
+              value: "https://sykonaught.com, http://localhost:3000, http://localhost:3001", // Adjust to specific domains if needed
             },
             {
               key: "Access-Control-Allow-Methods",

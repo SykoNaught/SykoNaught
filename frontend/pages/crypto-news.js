@@ -349,6 +349,8 @@ export async function getServerSideProps() {
     const apiKey = process.env.CRYPTOPANIC_API_KEY;
     const apiUrl = `https://cryptopanic.com/api/pro/v1/posts/?auth_token=${apiKey}&public=true&metadata=true`;
   
+    console.log("API URL:", apiUrl);
+console.log("API Key Length:", apiKey ? apiKey.length : "Not Set");
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
