@@ -84,7 +84,7 @@ export default async function handler(req, res) {
                     temperature: 0.4,
                     top_p: 0.7,
                     top_k: 35,
-                    repetition_penalty: 1.4,
+                    repetition_penalty: 1.3,
                     stop_sequences: ["\n", "END", ".", "!"],
                 },
             });
