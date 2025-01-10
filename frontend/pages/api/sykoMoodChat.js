@@ -69,10 +69,13 @@ export default async function handler(req, res) {
                 model: "meta-llama/Llama-3.3-70B-Instruct",
                 inputs: fullPrompt,
                 parameters: {
+                    return_full_text: false,
                     max_new_tokens: 200,
-                    temperature: 0.75,
-                    top_p: 0.85,
-                    top_k: 60,
+                    temperature: 0.8,
+                    top_p: 0.75,
+                    top_k: 65,
+                    repetition_penalty: 1.3,
+                    stop_sequences: ["\n", "END", ".", "!"],
                 },
             });
 

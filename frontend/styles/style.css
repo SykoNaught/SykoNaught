@@ -865,13 +865,19 @@ a.red:hover{
   text-align:left;
   position:sticky;
   transition: 0.5s ease !important;
+  height:56px;
 }
 @media (min-width: 767px) {
   .news-filter-wrapper {
     padding: 2em;
+    height:auto;
   }
 }
-
+.filter-items-wrapper{
+  z-index:99999;
+  position:relative;
+  background-color: #1a1a1a;
+}
 .filter-items-wrapper .news-filter-item:last-child{
   border-bottom:0px;
 }
