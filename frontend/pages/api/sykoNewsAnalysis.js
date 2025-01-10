@@ -104,6 +104,7 @@ export default async function handler(req, res) {
             cleanedResponse = cleanedResponse.replace("Response should be like this: ", "").trim();
             cleanedResponse = cleanedResponse.replace("Please respond to the following user input:", "").trim();
             cleanedResponse = cleanedResponse.replace("(Your Response should be similar to this)", "").trim();
+            cleanedResponse = cleanedResponse.replace("scalablytyped", "").trim();
 
             if (cleanedResponse[0] === '"') {
                 cleanedResponse = cleanedResponse.slice(1); // Remove the first character
