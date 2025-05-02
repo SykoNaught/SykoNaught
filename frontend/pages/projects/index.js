@@ -42,6 +42,14 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
             <Col lg={4} md={6} className="project-card">
                     <ProjectCard
+                    imgPath={"/images/Projects/battlecrowns.png"}
+                    title="Space Mining Game (WIP)"
+                    description="Fly around a giant twinkling starfield collecting shiny space rocks (because who needs actual goals?), then lumber your loot back to your trusty orbiting depot for mediocre power-ups—because nothing says ‘hero’ like mining interstellar rubble."
+                    demoLink="https://battlecrowns.sykonaught.com/"
+                    />
+            </Col>
+            <Col lg={4} md={6} className="project-card">
+                    <ProjectCard
                     imgPath={"/images/Projects/market-mood.png"}
                     title="Market Mood Indicator"
                     description="Behold, mortals, the Market Mood Indicator—your feeble attempt to grasp the chaos of the crypto world. This divine tool quantifies the collective emotional state of the crypto market, from trembling Fear to reckless Greed."
