@@ -43,9 +43,11 @@ function Projects() {
             <Col lg={4} md={6} className="project-card">
                     <ProjectCard
                     imgPath={"/images/Projects/battlecrowns.png"}
-                    title="Space Mining Game (WIP)"
-                    description="Fly around a giant twinkling starfield collecting shiny space rocks (because who needs actual goals?), then lumber your loot back to your trusty orbiting depot for mediocre power-ups—because nothing says ‘hero’ like mining interstellar rubble."
-                    demoLink="https://battlecrowns.sykonaught.com/"
+                    title="SykoNova (Alpha)"
+                    description="Listen up, Cadet. You're officially expendable.  
+                        Your job is to mine Gravium, haul it back to the depot, and juice your systems before the Valkari shred you into stardust.  
+                        This isn't flight school. It's a front-line war zone—and you're the bait."
+                    demoLink="https://www.sykonova.com"
                     />
             </Col>
             <Col lg={4} md={6} className="project-card">
